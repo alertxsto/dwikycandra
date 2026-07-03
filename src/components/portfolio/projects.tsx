@@ -1,7 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { ArrowUpRight, Cpu, Database, Boxes, Network, Terminal, Package, Layers, Bot, Code2, Trophy, GitBranch, Sparkles } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ArrowUpRight, ChevronDown, Cpu, Database, Boxes, Network, Terminal, Package, Layers, Bot, Code2, Trophy, GitBranch, Sparkles, Brain, Wrench, FlaskConical } from 'lucide-react'
 import { useRef, useState } from 'react'
 
 interface Feature {
@@ -19,6 +19,7 @@ interface Project {
   hue: string
   href: string
   external: boolean
+  status?: string
   techStack: string[]
   features: Feature[]
   metrics: { label: string; value: string }[]
@@ -35,6 +36,7 @@ const projects: Project[] = [
     hue: 'from-emerald-400 to-teal-600',
     href: 'https://github.com/alertxsto/kydev',
     external: true,
+    status: 'Live · v0.8.8',
     techStack: ['Rust', 'Tauri', 'React', 'TypeScript', 'Tailwind', 'daisyUI', 'Shell', 'pkexec'],
     features: [
       { icon: Boxes, label: 'Mega Environments — 1-click bootstrap 100+ toolchains' },
@@ -49,7 +51,7 @@ const projects: Project[] = [
     metrics: [
       { label: 'Version', value: '0.8.8' },
       { label: 'License', value: 'MIT' },
-      { label: 'Platform', value: 'Linux (DNF)' },
+      { label: 'Platform', value: 'Linux' },
       { label: 'Toolchains', value: '100+' },
     ],
   },
@@ -63,6 +65,7 @@ const projects: Project[] = [
     hue: 'from-cyan-400 to-blue-600',
     href: 'https://zerocode.web.id',
     external: true,
+    status: 'Live · 1,247+ users',
     techStack: ['React 19', 'Vite', 'PostgreSQL', 'Monaco Editor', 'Pyodide', 'Gemini AI', 'Framer Motion', 'Tailwind'],
     features: [
       { icon: Code2, label: 'Browser-based Monaco IDE — multi-file, IntelliSense, cyberpunk theme' },
@@ -81,10 +84,37 @@ const projects: Project[] = [
       { label: 'Submissions', value: '24,567+' },
     ],
   },
+  {
+    num: '03',
+    title: 'HERMES LAB',
+    tagline: 'Personal R&D lab for agentic AI — Hermes-style orchestration, RAG pipelines, and tool-using LLM agents. Experiments in planning, memory, and multi-step reasoning. Honest WIP, not a product.',
+    category: 'Agentic AI / R&D',
+    year: '2026',
+    role: 'Solo exploration',
+    hue: 'from-lime-300 to-emerald-500',
+    href: 'https://github.com/alertxsto',
+    external: true,
+    status: 'WIP · Experiments',
+    techStack: ['Python', 'LangChain', 'LangGraph', 'Groq', 'ChromaDB', 'Ollama', 'Hermes', 'FastAPI'],
+    features: [
+      { icon: Brain, label: 'Hermes-style orchestration — planner + executor + memory loop' },
+      { icon: Database, label: 'RAG over personal notes — ChromaDB + Groq embeddings' },
+      { icon: Wrench, label: 'Tool-using agents — web search, code exec, file ops' },
+      { icon: Cpu, label: 'Local-first inference — Ollama for self-hosted LLMs on Tumbleweed' },
+      { icon: GitBranch, label: 'Multi-agent graph — LangGraph state machine workflows' },
+      { icon: FlaskConical, label: 'Eval harness — measure agent accuracy vs cost tradeoffs' },
+    ],
+    metrics: [
+      { label: 'Status', value: 'WIP' },
+      { label: 'Models', value: '4+' },
+      { label: 'Tools wired', value: '6+' },
+      { label: 'Hosting', value: 'Local' },
+    ],
+  },
 ]
 
-function ProjectRow({ p, index }: { p: Project; index: number }) {
-  const ref = useRef<HTMLAnchorElement>(null)
+function ProjectRow({ p, index, isOpen, onToggle }: { p: Project; index: number; isOpen: boolean; onToggle: () => void }) {
+  const ref = useRef<HTMLButtonElement>(null)
   const [pos, setPos] = useState({ x: 0, y: 0 })
   const [visible, setVisible] = useState(false)
 
@@ -103,17 +133,16 @@ function ProjectRow({ p, index }: { p: Project; index: number }) {
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className="relative"
     >
-      {/* The row itself */}
-      <a
+      {/* The row — now a button for accessibility */}
+      <button
         ref={ref}
-        href={p.href}
-        target={p.external ? '_blank' : undefined}
-        rel={p.external ? 'noopener noreferrer' : undefined}
-        className="project-row group block border-t border-border py-6 md:py-10 px-2 md:px-4 relative"
+        onClick={onToggle}
+        className="project-row group block w-full text-left border-t border-border py-6 md:py-10 px-2 md:px-4 relative"
         onMouseMove={onMove}
         onMouseEnter={() => setVisible(true)}
         onMouseLeave={() => setVisible(false)}
         data-cursor="hover"
+        aria-expanded={isOpen}
       >
         <div className="relative z-[2] flex items-baseline justify-between gap-6">
           <div className="flex items-baseline gap-4 md:gap-10 flex-1 min-w-0">
@@ -123,14 +152,19 @@ function ProjectRow({ p, index }: { p: Project; index: number }) {
             <h3 className="project-title group-hover:translate-x-2 transition-transform duration-500">
               {p.title}
             </h3>
+            {p.status && (
+              <span className="hidden md:inline-flex font-mono text-[10px] uppercase tracking-wider px-2 py-1 border border-border rounded-full text-muted-foreground shrink-0">
+                {p.status}
+              </span>
+            )}
           </div>
           <div className="hidden md:flex items-baseline gap-10 font-mono text-xs uppercase tracking-wider shrink-0">
             <span className="project-meta text-muted-foreground w-40">{p.category}</span>
             <span className="project-meta text-muted-foreground w-28">{p.role}</span>
             <span className="project-meta text-muted-foreground w-12 text-right">{p.year}</span>
-            <ArrowUpRight
-              className="project-meta text-muted-foreground group-hover:rotate-45 transition-transform"
-              size={28}
+            <ChevronDown
+              size={24}
+              className={`project-meta text-muted-foreground transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
             />
           </div>
           <span className="project-meta font-mono text-xs text-muted-foreground md:hidden shrink-0">
@@ -138,19 +172,27 @@ function ProjectRow({ p, index }: { p: Project; index: number }) {
           </span>
         </div>
 
-        {/* Mobile meta */}
-        <div className="md:hidden mt-2 font-mono text-xs text-muted-foreground pl-10">
-          {p.category} — {p.role}
+        {/* Mobile meta + status */}
+        <div className="md:hidden mt-2 font-mono text-xs text-muted-foreground pl-10 flex items-center gap-2 flex-wrap">
+          <span>{p.category}</span>
+          <span>·</span>
+          <span>{p.role}</span>
+          {p.status && (
+            <>
+              <span>·</span>
+              <span className="text-accent">{p.status}</span>
+            </>
+          )}
         </div>
 
-        {/* Floating image preview */}
+        {/* Floating image preview — only on hover, hidden when expanded */}
         <motion.div
           className="pointer-events-none absolute z-[3] hidden md:block w-64 h-40 overflow-hidden rounded-md shadow-2xl"
           animate={{
             x: pos.x - 128,
             y: pos.y - 80,
-            opacity: visible ? 1 : 0,
-            scale: visible ? 1 : 0.6,
+            opacity: visible && !isOpen ? 1 : 0,
+            scale: visible && !isOpen ? 1 : 0.6,
           }}
           transition={{ type: 'spring', stiffness: 250, damping: 25 }}
         >
@@ -164,80 +206,92 @@ function ProjectRow({ p, index }: { p: Project; index: number }) {
             </div>
           </div>
         </motion.div>
-      </a>
+      </button>
 
-      {/* Detail panel under the row */}
-      <div className="grid md:grid-cols-12 gap-6 md:gap-10 py-8 md:py-12 pl-2 md:pl-4">
-        {/* Tagline + tech stack */}
-        <div className="md:col-span-5">
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
-            {p.tagline}
-          </p>
-          <div className="flex flex-wrap gap-1.5">
-            {p.techStack.map((t) => (
-              <span
-                key={t}
-                className="font-mono text-[10px] md:text-xs px-2.5 py-1 border border-border rounded-full text-muted-foreground"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Features */}
-        <div className="md:col-span-5">
-          <div className="font-mono text-[10px] uppercase tracking-widest text-accent mb-4">
-            [Key Features]
-          </div>
-          <ul className="space-y-2.5">
-            {p.features.map((f, i) => {
-              const Icon = f.icon
-              return (
-                <li
-                  key={i}
-                  className="flex items-start gap-3 text-sm text-foreground/90 leading-snug"
-                >
-                  <Icon size={16} className="text-accent shrink-0 mt-0.5" />
-                  <span>{f.label}</span>
-                </li>
-              )
-            })}
-          </ul>
-        </div>
-
-        {/* Metrics */}
-        <div className="md:col-span-2">
-          <div className="font-mono text-[10px] uppercase tracking-widest text-accent mb-4">
-            [Metrics]
-          </div>
-          <div className="space-y-4">
-            {p.metrics.map((m) => (
-              <div key={m.label}>
-                <div className="font-display font-bold text-2xl md:text-3xl leading-none tracking-tight">
-                  {m.value}
+      {/* Expandable detail panel */}
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden"
+          >
+            <div className="grid md:grid-cols-12 gap-6 md:gap-10 py-8 md:py-12 pl-2 md:pl-4">
+              {/* Tagline + tech stack */}
+              <div className="md:col-span-5">
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
+                  {p.tagline}
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {p.techStack.map((t) => (
+                    <span
+                      key={t}
+                      className="font-mono text-[10px] md:text-xs px-2.5 py-1 border border-border rounded-full text-muted-foreground"
+                    >
+                      {t}
+                    </span>
+                  ))}
                 </div>
-                <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground mt-1">
-                  {m.label}
+                <a
+                  href={p.href}
+                  target={p.external ? '_blank' : undefined}
+                  rel={p.external ? 'noopener noreferrer' : undefined}
+                  className="mt-6 inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-foreground hover:text-accent transition-colors group/link"
+                  data-cursor="hover"
+                >
+                  {p.external ? 'Visit project' : 'Open'}
+                  <ArrowUpRight
+                    size={14}
+                    className="group-hover/link:rotate-45 transition-transform"
+                  />
+                </a>
+              </div>
+
+              {/* Features */}
+              <div className="md:col-span-5">
+                <div className="font-mono text-[10px] uppercase tracking-widest text-accent mb-4">
+                  [Key Features]
+                </div>
+                <ul className="space-y-2.5">
+                  {p.features.map((f, i) => {
+                    const Icon = f.icon
+                    return (
+                      <li
+                        key={i}
+                        className="flex items-start gap-3 text-sm text-foreground/90 leading-snug"
+                      >
+                        <Icon size={16} className="text-accent shrink-0 mt-0.5" />
+                        <span>{f.label}</span>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+
+              {/* Metrics */}
+              <div className="md:col-span-2">
+                <div className="font-mono text-[10px] uppercase tracking-widest text-accent mb-4">
+                  [Metrics]
+                </div>
+                <div className="space-y-4">
+                  {p.metrics.map((m) => (
+                    <div key={m.label}>
+                      <div className="font-display font-bold text-2xl md:text-3xl leading-none tracking-tight">
+                        {m.value}
+                      </div>
+                      <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground mt-1">
+                        {m.label}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
-          <a
-            href={p.href}
-            target={p.external ? '_blank' : undefined}
-            rel={p.external ? 'noopener noreferrer' : undefined}
-            className="mt-6 inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-foreground hover:text-accent transition-colors group/link"
-            data-cursor="hover"
-          >
-            {p.external ? 'Visit' : 'Open'}
-            <ArrowUpRight
-              size={14}
-              className="group-hover/link:rotate-45 transition-transform"
-            />
-          </a>
-        </div>
-      </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Separator line at bottom of each (skip last) */}
       {index < projects.length - 1 && (
@@ -248,6 +302,8 @@ function ProjectRow({ p, index }: { p: Project; index: number }) {
 }
 
 export default function Projects() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0)
+
   return (
     <section id="work" className="relative py-24 md:py-40 px-6 md:px-10 border-t border-border">
       <div className="max-w-7xl mx-auto">
@@ -258,7 +314,7 @@ export default function Projects() {
           </span>
           <div className="flex-1 h-px bg-border" />
           <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-            (02 Flagship Projects)
+            (03 Projects · Click to expand)
           </span>
         </div>
 
@@ -269,13 +325,19 @@ export default function Projects() {
           transition={{ duration: 0.7 }}
           className="font-display font-medium text-[clamp(2rem,5vw,4.5rem)] leading-tight tracking-tight max-w-4xl mb-16 md:mb-24"
         >
-          Two flagship builds — <span className="text-accent">one ships on Linux desktops</span>,
-          one teaches the next generation to code.
+          Three builds — <span className="text-accent">one ships on Linux desktops</span>,
+          one teaches coding, one explores agentic AI.
         </motion.h2>
 
         <div>
           {projects.map((p, i) => (
-            <ProjectRow key={p.num} p={p} index={i} />
+            <ProjectRow
+              key={p.num}
+              p={p}
+              index={i}
+              isOpen={openIndex === i}
+              onToggle={() => setOpenIndex(openIndex === i ? null : i)}
+            />
           ))}
         </div>
 

@@ -2,6 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
+import Certifications from './certifications'
 
 function Counter({ to, suffix = '' }: { to: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null)
@@ -123,6 +124,9 @@ export default function About() {
             </p>
           </div>
         </div>
+
+        {/* Certifications & programs */}
+        <Certifications />
       </div>
     </section>
   )
