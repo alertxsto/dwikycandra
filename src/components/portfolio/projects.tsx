@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowUpRight, ChevronDown, Cpu, Database, Boxes, Network, Terminal, Package, Layers, Bot, Code2, Trophy, GitBranch, Sparkles, Brain, Wrench, FlaskConical } from 'lucide-react'
+import { ArrowUpRight, ChevronDown, Cpu, Database, Boxes, Network, Terminal, Package, Layers, Bot, Code2, Trophy, GitBranch, Sparkles, Brain, Wrench, FlaskConical, Users, ListChecks, AlertTriangle, HeartHandshake, Bell, ShieldCheck, Moon } from 'lucide-react'
 import { useRef, useState } from 'react'
 
 interface Feature {
@@ -109,6 +109,35 @@ const projects: Project[] = [
       { label: 'Models', value: '4+' },
       { label: 'Tools wired', value: '6+' },
       { label: 'Hosting', value: 'Local' },
+    ],
+  },
+  {
+    num: '04',
+    title: 'SYNCOLOGY',
+    tagline: 'Collaborative task manager for IT teams. Desktop app with real-time room sync, peer review, smart escalation, and a Ghost Pool where abandoned tasks become fair game for anyone to rescue.',
+    category: 'Desktop / Real-time Collab',
+    year: '2026',
+    role: 'Creator · Solo',
+    hue: 'from-fuchsia-400 to-purple-600',
+    href: 'https://github.com/alertxsto/syncology-app',
+    external: true,
+    status: 'Live · Open Source',
+    techStack: ['Python 3.10+', 'PySide6 (Qt 6)', 'Firebase Firestore', 'Firebase Auth', 'Cloud Functions', 'Node.js', 'QSS', 'REST API'],
+    features: [
+      { icon: Users, label: 'Room-based collab — 6-char invite codes, real-time team sync' },
+      { icon: ListChecks, label: 'Full task pipeline — Proposed → Todo → Review → Done/Disputed' },
+      { icon: AlertTriangle, label: 'Smart escalation — H-2 / Late / Ghost (48h+) via Cloud Functions' },
+      { icon: HeartHandshake, label: 'Ghost Pool rescue — anyone can adopt abandoned tasks for +50% bonus' },
+      { icon: ShieldCheck, label: 'Peer review — random reviewer assigned, approve/reject with reason' },
+      { icon: Bell, label: 'Nudge system — 3/day cap, +2 pts to sender for accountability' },
+      { icon: Trophy, label: 'Accountability ledger — contribution %, leaderboard, Ghost Alert badges' },
+      { icon: Moon, label: 'Dark-first Qt UI — QSS, 4 tabs: Overview / Tasks / Ledger / Room Info' },
+    ],
+    metrics: [
+      { label: 'License', value: 'MIT' },
+      { label: 'Platforms', value: '3' },
+      { label: 'CF functions', value: '8' },
+      { label: 'Sync cycle', value: '3s' },
     ],
   },
 ]
@@ -314,7 +343,7 @@ export default function Projects() {
           </span>
           <div className="flex-1 h-px bg-border" />
           <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-            (03 Projects · Click to expand)
+            (04 Projects · Click to expand)
           </span>
         </div>
 
@@ -325,8 +354,8 @@ export default function Projects() {
           transition={{ duration: 0.7 }}
           className="font-display font-medium text-[clamp(2rem,5vw,4.5rem)] leading-tight tracking-tight max-w-4xl mb-16 md:mb-24"
         >
-          Three builds — <span className="text-accent">one ships on Linux desktops</span>,
-          one teaches coding, one explores agentic AI.
+          Four builds — <span className="text-accent">one ships on Linux desktops</span>,
+          one teaches coding, one explores agentic AI, one orchestrates IT teams.
         </motion.h2>
 
         <div>
