@@ -1,0 +1,25 @@
+# Screenshots Directory
+
+This directory contains screenshots and visual assets for the documentation.
+
+## Required Screenshots
+
+- `hero-screenshot.png` - Main hero section screenshot showing the landing page
+- `projects-section.png` - Projects showcase section
+- `chatbot-demo.png` - Interactive chatbot demonstration
+- `mobile-view.png` - Mobile responsive design showcase
+
+## Image Guidelines
+
+- **Format:** PNG or JPG
+- **Resolution:** Minimum 1920x1080 for desktop screenshots
+- **Mobile Screenshots:** 375x812 (iPhone X dimensions)
+- **File Size:** Optimize images to be under 500KB each
+- **Naming:** Use kebab-case for file names
+
+## Adding Screenshots
+
+1. Take screenshots of your deployed portfolio
+2. Optimize images using tools like TinyPNG or ImageOptim
+3. Place them in this directory
+4. Update the README.md with the correct image paths
