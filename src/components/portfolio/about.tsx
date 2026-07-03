@@ -26,17 +26,17 @@ function Counter({ to, suffix = '' }: { to: number; suffix?: string }) {
 
   return (
     <span ref={ref}>
-      {n}
+      {n.toLocaleString('en-US')}
       {suffix}
     </span>
   )
 }
 
 const stats = [
-  { value: 19, suffix: '+', label: 'Courses shipped', note: 'ZeroCode curriculum' },
-  { value: 50, suffix: '+', label: 'Git commands', note: 'virtual terminal' },
-  { value: 7, suffix: '', label: 'Distros tried', note: 'ended at Tumbleweed' },
-  { value: 60, suffix: ' FPS', label: 'Target frame', note: 'always' },
+  { value: 1247, suffix: '+', label: 'Active learners', note: 'ZeroCode platform' },
+  { value: 15, suffix: '+', label: 'Projects shipped', note: 'production · real users' },
+  { value: 4, suffix: '', label: 'Pro certifications', note: 'IBM × IDCamp × DBS × AWS' },
+  { value: 7, suffix: '', label: 'Distros tested', note: 'Tumbleweed won' },
 ]
 
 export default function About() {
