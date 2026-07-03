@@ -3,32 +3,47 @@
 import { motion } from 'framer-motion'
 import Marquee from './marquee'
 
-const skillGroups = [
+interface SkillGroup {
+  title: string
+  items: string[]
+  accent: string // tailwind text color class for category title
+  pillAccent: string // tailwind classes for pill hover state
+}
+
+const skillGroups: SkillGroup[] = [
   {
     title: 'Agentic AI',
     items: ['Hermes', 'LangChain', 'LangGraph', 'RAG', 'OpenAI', 'Groq', 'Gemini', 'Vector DBs'],
+    accent: 'text-lime-300',
+    pillAccent: 'hover:bg-lime-300 hover:text-lime-950 hover:border-lime-300',
   },
   {
     title: 'Linux',
     items: ['openSUSE Tumbleweed', 'Zypper', 'Btrfs', 'Bash', 'Systemd', 'Tmux', 'Neovim', 'Fish'],
+    accent: 'text-cyan-300',
+    pillAccent: 'hover:bg-cyan-300 hover:text-cyan-950 hover:border-cyan-300',
   },
   {
     title: 'Frontend',
     items: ['TypeScript', 'React 19', 'Next.js 14', 'Tailwind CSS', 'Vite', 'Framer Motion'],
+    accent: 'text-foreground',
+    pillAccent: 'hover:bg-foreground hover:text-background hover:border-foreground',
   },
   {
     title: 'Backend',
     items: ['Node.js', 'PostgreSQL', 'Prisma', 'tRPC', 'JWT', 'Vercel Serverless'],
+    accent: 'text-orange-300',
+    pillAccent: 'hover:bg-orange-300 hover:text-orange-950 hover:border-orange-300',
   },
 ]
 
 const marqueeItems = [
-  'AGENTS THAT SHIP',
+  'AGENTIC AI',
   'TUMBLEWEED DAILY',
-  'COFFEE → CODE → MAGIC',
-  'BUILD BOLD',
+  'COFFEE → CODE → AUTONOMY',
+  'SHIP BOLD',
   'RAG PIPELINES',
-  'BLEEDING-EDGE LINUX',
+  'OPEN SOURCE',
 ]
 
 export default function Skills() {
@@ -71,7 +86,7 @@ export default function Skills() {
                 className="bg-background p-8 md:p-12 group hover:bg-secondary transition-colors"
               >
                 <div className="flex items-baseline justify-between mb-8">
-                  <h3 className="font-display font-bold text-3xl md:text-5xl tracking-tight">
+                  <h3 className={`font-display font-bold text-3xl md:text-5xl tracking-tight ${g.accent}`}>
                     {g.title}
                   </h3>
                   <span className="font-mono text-xs text-muted-foreground">
@@ -83,7 +98,7 @@ export default function Skills() {
                     <li
                       key={it}
                       data-cursor="hover"
-                      className="font-mono text-sm md:text-base px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all cursor-default"
+                      className={`font-mono text-sm md:text-base px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full transition-all cursor-default ${g.pillAccent}`}
                     >
                       {it}
                     </li>

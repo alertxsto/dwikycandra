@@ -247,13 +247,13 @@ function ProjectRow({ p, index, isOpen, onToggle }: { p: Project; index: number;
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden"
           >
-            <div className="grid md:grid-cols-12 gap-6 md:gap-10 py-8 md:py-12 pl-2 md:pl-4">
-              {/* Tagline + tech stack */}
-              <div className="md:col-span-5">
+            <div className="grid md:grid-cols-12 gap-8 md:gap-10 py-8 md:py-12 pl-2 md:pl-4">
+              {/* Tagline + tech stack + visit link */}
+              <div className="md:col-span-4">
                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
                   {p.tagline}
                 </p>
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-1.5 mb-6">
                   {p.techStack.map((t) => (
                     <span
                       key={t}
@@ -267,7 +267,7 @@ function ProjectRow({ p, index, isOpen, onToggle }: { p: Project; index: number;
                   href={p.href}
                   target={p.external ? '_blank' : undefined}
                   rel={p.external ? 'noopener noreferrer' : undefined}
-                  className="mt-6 inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-foreground hover:text-accent transition-colors group/link"
+                  className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-foreground hover:text-accent transition-colors group/link"
                   data-cursor="hover"
                 >
                   {p.external ? 'Visit project' : 'Open'}
@@ -299,18 +299,18 @@ function ProjectRow({ p, index, isOpen, onToggle }: { p: Project; index: number;
                 </ul>
               </div>
 
-              {/* Metrics */}
-              <div className="md:col-span-2">
+              {/* Metrics — 3 col, more breathing room */}
+              <div className="md:col-span-3">
                 <div className="font-mono text-[10px] uppercase tracking-widest text-accent mb-4">
                   [Metrics]
                 </div>
-                <div className="space-y-4">
+                <div className="space-y-5">
                   {p.metrics.map((m) => (
                     <div key={m.label}>
-                      <div className="font-display font-bold text-2xl md:text-3xl leading-none tracking-tight">
+                      <div className="font-display font-bold text-3xl md:text-4xl leading-none tracking-tight">
                         {m.value}
                       </div>
-                      <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground mt-1">
+                      <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground mt-1.5">
                         {m.label}
                       </div>
                     </div>

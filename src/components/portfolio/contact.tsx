@@ -11,7 +11,6 @@ const socials = [
   { label: 'GitHub', value: '@alertxsto', href: 'https://github.com/alertxsto' },
   { label: 'Portfolio', value: 'dwiky-candra.vercel.app', href: 'https://dwiky-candra.vercel.app' },
   { label: 'Instagram', value: '@dky_cdr', href: 'https://instagram.com/dky_cdr' },
-  { label: 'Location', value: 'Indonesia · UTC+7', href: '#' },
 ]
 
 export default function Contact() {
@@ -72,14 +71,9 @@ export default function Contact() {
             {copied ? 'Copied!' : 'dwikycandra005@gmail.com'}
             <ArrowUpRight size={28} className="group-hover:rotate-45 transition-transform shrink-0" />
           </button>
-
-          <div className="mt-6 flex items-center justify-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground">
-            <MapPin size={14} className="text-accent" />
-            Indonesia — UTC+7
-          </div>
         </motion.div>
 
-        {/* Socials grid */}
+        {/* Socials grid — 5 cards now, no Location card */}
         <div className="mt-24 md:mt-32 grid grid-cols-2 md:grid-cols-3 gap-px bg-border border border-border">
           {socials.map((s, i) => (
             <motion.a
@@ -108,6 +102,28 @@ export default function Contact() {
               />
             </motion.a>
           ))}
+
+          {/* Location card — non-link, distinct visual treatment */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: socials.length * 0.05, duration: 0.4 }}
+            className="bg-secondary p-6 md:p-8 flex items-baseline justify-between border-t border-border md:border-t-0 md:[&:nth-child(3n+1):not(:first-child)]:border-l"
+          >
+            <div>
+              <div className="font-mono text-[10px] md:text-xs uppercase tracking-wider text-accent mb-2 flex items-center gap-1.5">
+                <MapPin size={11} />
+                Location
+              </div>
+              <div className="font-display font-semibold text-base md:text-xl">
+                Indonesia
+              </div>
+              <div className="font-mono text-[10px] text-muted-foreground mt-1">
+                UTC+7 · Remote-friendly
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

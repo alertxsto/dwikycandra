@@ -64,8 +64,7 @@ export default function Hero() {
             transition={{ delay: 0.45, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-[clamp(3.5rem,18vw,16rem)] flex items-baseline gap-2 md:gap-6 flex-wrap"
           >
-            <span className="text-outline">CAN</span>
-            <span className="text-accent">DRA</span>
+            <span className="text-outline">CANDRA</span>
             <motion.span
               initial={{ scale: 0, rotate: -90 }}
               animate={{ scale: 1, rotate: 0 }}

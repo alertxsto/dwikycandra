@@ -26,8 +26,7 @@ export default function Footer() {
       {/* Quote */}
       <div className="px-6 md:px-10 pt-16 md:pt-24 max-w-5xl mx-auto text-center">
         <p className="font-display italic text-2xl md:text-4xl text-muted-foreground leading-tight">
-          &ldquo;The web is the ultimate canvas for creativity and innovation. Linux is the
-          workshop where I sharpen the tools.&rdquo;
+          &ldquo;Code that thinks, on a system that just rolls back when it doesn&apos;t.&rdquo;
         </p>
       </div>
 
