@@ -11,48 +11,54 @@ interface Project {
   year: string
   role: string
   hue: string
+  href: string
 }
 
 const projects: Project[] = [
   {
     num: '01',
-    title: 'NEONBANK',
-    category: 'Fintech / Web App',
-    year: '2025',
-    role: 'Lead Frontend',
-    hue: 'from-lime-300 to-emerald-500',
+    title: 'ZEROCODE',
+    category: 'E-Learning / Cyberpunk',
+    year: '2026',
+    role: 'Creator, Full-stack',
+    hue: 'from-cyan-400 to-blue-600',
+    href: 'https://zerocode.vercel.app',
   },
   {
     num: '02',
-    title: 'STUDIO ATLAS',
-    category: 'Architecture / Portfolio',
-    year: '2025',
-    role: 'Design + Dev',
-    hue: 'from-orange-400 to-red-500',
+    title: 'KYDEV',
+    category: 'Personal / Command Center',
+    year: '2026',
+    role: 'Solo build',
+    hue: 'from-fuchsia-400 to-purple-600',
+    href: 'https://github.com/alertxsto/kydev',
   },
   {
     num: '03',
-    title: 'PULSE FM',
-    category: 'Music / Streaming',
-    year: '2024',
-    role: 'Creative Dev',
-    hue: 'from-fuchsia-400 to-purple-600',
+    title: 'HERMES-AGENT',
+    category: 'Agentic AI / Orchestration',
+    year: '2026',
+    role: 'Architect',
+    hue: 'from-lime-300 to-emerald-500',
+    href: '#contact',
   },
   {
     num: '04',
-    title: 'TANAHAIR',
-    category: 'Gov / Civic Tech',
-    year: '2024',
-    role: 'Frontend Lead',
-    hue: 'from-sky-400 to-blue-600',
+    title: 'NEBULA RAG',
+    category: 'AI / Retrieval Pipeline',
+    year: '2025',
+    role: 'AI Engineer',
+    hue: 'from-orange-400 to-red-500',
+    href: '#contact',
   },
   {
     num: '05',
-    title: 'KARUNIA',
-    category: 'E-commerce / Headless',
-    year: '2023',
-    role: 'Full-stack',
-    hue: 'from-amber-300 to-rose-500',
+    title: 'TUMBLEWEED-DOTS',
+    category: 'Linux / Dotfiles & Scripts',
+    year: '2025',
+    role: 'Maintainer',
+    hue: 'from-emerald-400 to-teal-600',
+    href: '#contact',
   },
 ]
 
@@ -71,7 +77,9 @@ function ProjectRow({ p }: { p: Project }) {
   return (
     <a
       ref={ref}
-      href="#contact"
+      href={p.href}
+      target={p.href.startsWith('http') ? '_blank' : undefined}
+      rel={p.href.startsWith('http') ? 'noopener noreferrer' : undefined}
       className="project-row group block border-t border-border last:border-b py-6 md:py-10 px-2 md:px-4 relative"
       onMouseMove={onMove}
       onMouseEnter={() => setVisible(true)}
@@ -153,7 +161,8 @@ export default function Projects() {
           transition={{ duration: 0.7 }}
           className="font-display font-medium text-[clamp(2rem,5vw,4.5rem)] leading-tight tracking-tight max-w-4xl mb-16 md:mb-24"
         >
-          A curated cut of <span className="text-accent">recent work</span> — hover any row.
+          A curated cut of <span className="text-accent">recent work</span> — agents, apps, and a
+          little Linux. Hover any row.
         </motion.h2>
 
         <div>
@@ -164,7 +173,9 @@ export default function Projects() {
 
         <div className="mt-16 flex justify-center">
           <a
-            href="#contact"
+            href="https://github.com/alertxsto"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group inline-flex items-center gap-3 font-display font-semibold text-2xl md:text-4xl border-b-2 border-foreground pb-2 hover:text-accent hover:border-accent transition-colors"
           >
             View full archive

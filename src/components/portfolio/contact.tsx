@@ -6,12 +6,12 @@ import { useState } from 'react'
 import { toast } from 'sonner'
 
 const socials = [
-  { label: 'Email', value: 'halo@rangga.dev', href: 'mailto:halo@rangga.dev' },
-  { label: 'GitHub', value: '@ranggadev', href: '#' },
-  { label: 'Dribbble', value: '@ranggadev', href: '#' },
-  { label: 'LinkedIn', value: '/in/ranggadev', href: '#' },
-  { label: 'Twitter / X', value: '@ranggadev', href: '#' },
-  { label: 'Instagram', value: '@rangga.codes', href: '#' },
+  { label: 'Email', value: 'dwikycandra005@gmail.com', href: 'mailto:dwikycandra005@gmail.com' },
+  { label: 'LinkedIn', value: '/in/dwiky-candra', href: 'https://linkedin.com/in/dwiky-candra' },
+  { label: 'GitHub', value: '@alertxsto', href: 'https://github.com/alertxsto' },
+  { label: 'Portfolio', value: 'dwiky-candra.vercel.app', href: 'https://dwiky-candra.vercel.app' },
+  { label: 'Instagram', value: '@dky_cdr', href: 'https://instagram.com/dky_cdr' },
+  { label: 'Location', value: 'Indonesia · UTC+7', href: '#' },
 ]
 
 export default function Contact() {
@@ -19,7 +19,7 @@ export default function Contact() {
 
   const copyEmail = async () => {
     try {
-      await navigator.clipboard.writeText('halo@rangga.dev')
+      await navigator.clipboard.writeText('dwikycandra005@gmail.com')
       setCopied(true)
       toast.success('Email copied to clipboard')
       setTimeout(() => setCopied(false), 1800)
@@ -66,16 +66,16 @@ export default function Contact() {
           <button
             onClick={copyEmail}
             data-cursor="hover"
-            className="group mt-12 inline-flex items-center gap-4 font-display font-semibold text-2xl md:text-4xl border-b-2 border-foreground pb-2 hover:text-accent hover:border-accent transition-colors"
+            className="group mt-12 inline-flex items-center gap-4 font-display font-semibold text-xl md:text-3xl border-b-2 border-foreground pb-2 hover:text-accent hover:border-accent transition-colors max-w-full break-all"
           >
-            <Mail size={32} className="group-hover:rotate-12 transition-transform" />
-            {copied ? 'Copied!' : 'halo@rangga.dev'}
-            <ArrowUpRight size={32} className="group-hover:rotate-45 transition-transform" />
+            <Mail size={28} className="group-hover:rotate-12 transition-transform shrink-0" />
+            {copied ? 'Copied!' : 'dwikycandra005@gmail.com'}
+            <ArrowUpRight size={28} className="group-hover:rotate-45 transition-transform shrink-0" />
           </button>
 
           <div className="mt-6 flex items-center justify-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground">
             <MapPin size={14} className="text-accent" />
-            Jakarta, Indonesia — UTC+7
+            Indonesia — UTC+7
           </div>
         </motion.div>
 
@@ -85,6 +85,8 @@ export default function Contact() {
             <motion.a
               key={s.label}
               href={s.href}
+              target={s.href.startsWith('http') ? '_blank' : undefined}
+              rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -96,11 +98,13 @@ export default function Contact() {
                 <div className="font-mono text-[10px] md:text-xs uppercase tracking-wider text-muted-foreground group-hover:text-accent-foreground/70 mb-2">
                   {s.label}
                 </div>
-                <div className="font-display font-semibold text-lg md:text-2xl">{s.value}</div>
+                <div className="font-display font-semibold text-base md:text-xl break-all">
+                  {s.value}
+                </div>
               </div>
               <ArrowUpRight
                 size={20}
-                className="text-muted-foreground group-hover:text-accent-foreground group-hover:rotate-45 transition-all"
+                className="text-muted-foreground group-hover:text-accent-foreground group-hover:rotate-45 transition-all shrink-0"
               />
             </motion.a>
           ))}

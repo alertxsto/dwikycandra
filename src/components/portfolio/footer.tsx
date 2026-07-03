@@ -23,19 +23,27 @@ export default function Footer() {
 
   return (
     <footer className="relative mt-auto border-t border-border bg-background">
+      {/* Quote */}
+      <div className="px-6 md:px-10 pt-16 md:pt-24 max-w-5xl mx-auto text-center">
+        <p className="font-display italic text-2xl md:text-4xl text-muted-foreground leading-tight">
+          &ldquo;The web is the ultimate canvas for creativity and innovation. Linux is the
+          workshop where I sharpen the tools.&rdquo;
+        </p>
+      </div>
+
       {/* Giant footer text */}
       <div className="overflow-hidden px-6 md:px-10 pt-16 md:pt-24">
         <div className="font-display font-bold tracking-[-0.04em] leading-none text-[clamp(4rem,18vw,16rem)] text-outline">
-          RANGGA
+          DWIKY
         </div>
       </div>
 
       {/* Meta row */}
       <div className="px-6 md:px-10 py-8 border-t border-border flex flex-col md:flex-row justify-between gap-6 font-mono text-xs uppercase tracking-widest text-muted-foreground">
         <div className="flex flex-wrap gap-6">
-          <span>© 2026 Rangga Pratama</span>
+          <span>© 2026 Dwiky Candra</span>
           <span className="hidden md:inline">·</span>
-          <span>Built with Next.js 16 + Tailwind v4</span>
+          <span>Built on openSUSE Tumbleweed</span>
         </div>
         <div className="flex flex-wrap gap-6">
           <span className="flex items-center gap-2">

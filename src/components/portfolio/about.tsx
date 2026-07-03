@@ -33,10 +33,10 @@ function Counter({ to, suffix = '' }: { to: number; suffix?: string }) {
 }
 
 const stats = [
-  { value: 6, suffix: '+', label: 'Years building', note: 'shipping products' },
-  { value: 48, suffix: '', label: 'Projects done', note: 'clients worldwide' },
-  { value: 12, suffix: 'M', label: 'Users reached', note: 'through shipped work' },
-  { value: 9, suffix: '', label: 'Awards', note: 'design & dev' },
+  { value: 19, suffix: '+', label: 'Courses shipped', note: 'ZeroCode curriculum' },
+  { value: 50, suffix: '+', label: 'Git commands', note: 'virtual terminal' },
+  { value: 7, suffix: '', label: 'Distros tried', note: 'ended at Tumbleweed' },
+  { value: 60, suffix: ' FPS', label: 'Target frame', note: 'always' },
 ]
 
 export default function About() {
@@ -60,9 +60,9 @@ export default function About() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="font-display font-medium tracking-[-0.03em] leading-[1.05] text-[clamp(2rem,6vw,5.5rem)] max-w-6xl"
         >
-          I&apos;m a <span className="text-accent">creative developer</span> obsessed with
-          the intersection of <span className="text-outline">design, code & motion.</span>{' '}
-          I turn ambitious ideas into pixel-perfect interfaces that move, breathe, and convert.
+          I build <span className="text-accent">agentic AI systems</span> that reason and ship —
+          and I do it from an <span className="text-outline">openSUSE Tumbleweed</span> terminal
+          after years of distrohopping. Code that thinks, on a system that just works.
         </motion.h2>
 
         {/* Stats grid */}
@@ -94,24 +94,32 @@ export default function About() {
               [Bio]
             </div>
             <div className="font-display text-2xl md:text-3xl font-medium leading-tight">
-              The short version.
+              Coffee → code → autonomous agents.
             </div>
           </div>
           <div className="md:col-span-2 space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
             <p>
-              Born in Bandung, raised on the early internet. I started writing HTML at 12 to mod
-              my gaming forum, and never stopped. Today I lead front-end at a fintech startup while
-              taking on select freelance gigs where I can push the craft harder.
+              I&apos;m Dwiky — a full-stack developer who fell hard into agentic AI. I build agents
+              that don&apos;t just answer questions but plan, use tools, and ship work end-to-end.
+              Hermes-style orchestration, LangChain graphs, RAG pipelines over real
+              production data — the whole stack from prompt engineering to deployment.
             </p>
             <p>
-              My work lives at the seam between design and engineering — I write production
-              TypeScript by day and obsess over kerning pairs by night. I believe the best
-              interfaces are <span className="text-foreground font-medium">felt before they&apos;re
-              understood</span>, and that performance is a feature.
+              On the OS side, I&apos;m a recovering distrohopper. I&apos;ve daily-driven Arch,
+              Fedora, NixOS, Debian, Pop!_OS, Endeavour, and a few I&apos;d rather forget — and I
+              finally landed on{' '}
+              <span className="text-foreground font-medium">openSUSE Tumbleweed</span> for the
+              rolling-release freshness with the stability of Zypper and Btrfs snapshots. When
+              something breaks, I roll back. When it doesn&apos;t, I ship.
             </p>
             <p>
-              Outside the screen, you&apos;ll find me collecting mechanical keyboards, brewing
-              single-origin coffee, and losing badly at chess to my 9-year-old nephew.
+              My flagship work is{' '}
+              <span className="text-foreground font-medium">ZeroCode</span>, a cyberpunk-themed
+              coding academy with a browser IDE, AI assistant (Gemini-powered Nebula), and a custom
+              virtual Git. I also maintain{' '}
+              <span className="text-foreground font-medium">kydev</span>, my personal command
+              center. Currently exploring WebGPU, Hermes agent patterns, and self-hosted LLM
+              inference on Linux.
             </p>
           </div>
         </div>

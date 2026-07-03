@@ -23,21 +23,23 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "RANGGA PRATAMA — Creative Developer & Designer",
+  title: "DWIKY CANDRA — Agentic AI Engineer × Linux Engineer",
   description:
-    "Portfolio of Rangga Pratama, a creative developer & designer crafting bold, interactive digital experiences. Big type, bigger ideas.",
+    "Portfolio of Dwiky Candra. Building agentic AI systems (Hermes, LangChain, RAG) and shipping from openSUSE Tumbleweed. Big type, bigger ideas.",
   keywords: [
-    "creative developer",
-    "portfolio",
-    "interactive design",
-    "frontend",
-    "UI/UX",
-    "Rangga Pratama",
+    "agentic AI",
+    "AI engineer",
+    "Hermes agent",
+    "LangChain",
+    "Linux",
+    "openSUSE Tumbleweed",
+    "full-stack developer",
+    "Dwiky Candra",
   ],
-  authors: [{ name: "Rangga Pratama" }],
+  authors: [{ name: "Dwiky Candra" }],
   openGraph: {
-    title: "RANGGA PRATAMA — Creative Developer & Designer",
-    description: "Big type, bigger ideas. Interactive portfolio.",
+    title: "DWIKY CANDRA — Agentic AI Engineer × Linux Engineer",
+    description: "Agentic AI from a Tumbleweed terminal. Big type, bigger ideas.",
     type: "website",
   },
 };

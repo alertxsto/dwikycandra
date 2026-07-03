@@ -52,12 +52,12 @@ export default function Navbar() {
         }`}
       >
         <nav className="flex items-center justify-between px-6 md:px-10 py-4 md:py-5">
-          <a href="#hero" className="flex items-center gap-3 group">
+          <a href="#hero" className="flex items-center gap-3 group" aria-label="Dwiky Candra home">
             <div className="w-9 h-9 bg-accent text-accent-foreground flex items-center justify-center font-display font-bold text-xl rounded-sm group-hover:rotate-12 transition-transform">
-              R
+              D
             </div>
             <span className="font-display font-semibold text-sm md:text-base tracking-tight hidden sm:inline">
-              RANGGA<span className="text-accent">.</span>DEV
+              DWIKY<span className="text-accent">.</span>DEV
             </span>
           </a>
 

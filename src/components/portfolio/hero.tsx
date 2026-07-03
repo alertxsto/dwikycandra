@@ -19,7 +19,7 @@ export default function Hero() {
         <div>
           <span className="text-accent">[01]</span> Location
           <br />
-          <span className="text-foreground">Jakarta, ID</span>
+          <span className="text-foreground">Indonesia, ID</span>
         </div>
         <div>
           <span className="text-accent">[02]</span> Status
@@ -29,12 +29,12 @@ export default function Hero() {
         <div>
           <span className="text-accent">[03]</span> Role
           <br />
-          <span className="text-foreground">Creative Dev</span>
+          <span className="text-foreground">Agentic AI Eng</span>
         </div>
         <div>
-          <span className="text-accent">[04]</span> Year
+          <span className="text-accent">[04]</span> Daily Driver
           <br />
-          <span className="text-foreground">2026 ©</span>
+          <span className="text-foreground">Tumbleweed</span>
         </div>
       </motion.div>
 
@@ -46,7 +46,7 @@ export default function Hero() {
           transition={{ delay: 0.2 }}
           className="font-mono text-xs md:text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4 md:mb-6"
         >
-          — Creative Developer & Designer
+          — Agentic AI Engineer × Linux Engineer
         </motion.div>
 
         <h1 className="font-display font-bold leading-[0.85] tracking-[-0.04em]">
@@ -56,7 +56,7 @@ export default function Hero() {
             transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-[clamp(3.5rem,18vw,16rem)]"
           >
-            RANGGA
+            DWIKY
           </motion.div>
           <motion.div
             initial={{ y: 80, opacity: 0 }}
@@ -64,8 +64,8 @@ export default function Hero() {
             transition={{ delay: 0.45, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-[clamp(3.5rem,18vw,16rem)] flex items-baseline gap-2 md:gap-6 flex-wrap"
           >
-            <span className="text-outline">PRA</span>
-            <span className="text-accent">TAMA</span>
+            <span className="text-outline">CAN</span>
+            <span className="text-accent">DRA</span>
             <motion.span
               initial={{ scale: 0, rotate: -90 }}
               animate={{ scale: 1, rotate: 0 }}
@@ -83,9 +83,11 @@ export default function Hero() {
           transition={{ delay: 0.9, duration: 0.6 }}
           className="mt-8 md:mt-12 max-w-2xl text-base md:text-xl text-muted-foreground leading-relaxed"
         >
-          I craft <span className="text-foreground font-medium">bold, interactive digital
-          experiences</span> where typography meets motion. Currently shipping front-end magic &
-          design systems from Jakarta to the world.
+          I build <span className="text-foreground font-medium">agentic AI systems</span> that
+          reason, plan, and ship — from Hermes-style agents to RAG pipelines. Daily-driving
+          <span className="text-foreground font-medium"> openSUSE Tumbleweed</span> after a long
+          distrohopper journey. Coffee <span className="text-accent">→</span> code{' '}
+          <span className="text-accent">→</span> autonomous agents.
         </motion.p>
       </div>
 

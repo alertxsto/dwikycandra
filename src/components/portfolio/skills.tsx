@@ -5,30 +5,30 @@ import Marquee from './marquee'
 
 const skillGroups = [
   {
-    title: 'Design',
-    items: ['Figma', 'Design Systems', 'Typography', 'Motion', 'Webflow', 'Spline'],
+    title: 'Agentic AI',
+    items: ['Hermes', 'LangChain', 'LangGraph', 'RAG', 'OpenAI', 'Groq', 'Gemini', 'Vector DBs'],
+  },
+  {
+    title: 'Linux',
+    items: ['openSUSE Tumbleweed', 'Zypper', 'Btrfs', 'Bash', 'Systemd', 'Tmux', 'Neovim', 'Fish'],
   },
   {
     title: 'Frontend',
-    items: ['TypeScript', 'React 19', 'Next.js 16', 'Tailwind v4', 'Framer Motion', 'Three.js'],
+    items: ['TypeScript', 'React 19', 'Next.js 14', 'Tailwind CSS', 'Vite', 'Framer Motion'],
   },
   {
     title: 'Backend',
-    items: ['Node.js', 'Bun', 'Prisma', 'PostgreSQL', 'tRPC', 'Redis'],
-  },
-  {
-    title: 'Infra',
-    items: ['Vercel', 'Docker', 'Cloudflare', 'GitHub Actions', 'Turborepo', 'Sentry'],
+    items: ['Node.js', 'PostgreSQL', 'Prisma', 'tRPC', 'JWT', 'Vercel Serverless'],
   },
 ]
 
 const marqueeItems = [
-  'AVAILABLE FOR WORK',
-  'BASED IN JAKARTA',
-  'CREATIVE DEVELOPER',
-  'TYPE NERD',
-  'SHIP FAST',
+  'AGENTS THAT SHIP',
+  'TUMBLEWEED DAILY',
+  'COFFEE → CODE → MAGIC',
   'BUILD BOLD',
+  'RAG PIPELINES',
+  'BLEEDING-EDGE LINUX',
 ]
 
 export default function Skills() {
@@ -56,8 +56,8 @@ export default function Skills() {
             transition={{ duration: 0.7 }}
             className="font-display font-medium text-[clamp(2rem,5vw,4.5rem)] leading-tight tracking-tight max-w-4xl mb-16 md:mb-24"
           >
-            Tools I reach for <span className="text-accent">first</span> — picked for speed,
-            type-safety, and aesthetic range.
+            Tools I reach for <span className="text-accent">first</span> — from agent frameworks
+            to the terminal I live in.
           </motion.h2>
 
           <div className="grid md:grid-cols-2 gap-px bg-border border border-border">
