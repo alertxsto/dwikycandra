@@ -96,21 +96,22 @@ export default function Navbar() {
                 <li key={l.href}>
                   <a
                     href={l.href}
-                    className={`relative px-3 lg:px-4 py-1.5 rounded-full font-mono text-[11px] uppercase tracking-wider transition-all ${
+                    className={`relative px-3 lg:px-4 py-2 rounded-full font-mono text-[11px] uppercase tracking-wider transition-colors ${
                       isActive
-                        ? 'text-accent-foreground'
+                        ? 'text-accent'
                         : 'text-muted-foreground hover:text-foreground'
                     }`}
                   >
+                    {/* Tiny top tick indicator for active */}
                     {isActive && (
                       <motion.span
-                        layoutId="nav-pill"
-                        className="absolute inset-0 bg-accent rounded-full"
+                        layoutId="nav-tick"
+                        className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-accent"
                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                       />
                     )}
                     <span className="relative z-10 flex items-baseline gap-1.5">
-                      <span className="text-[9px] opacity-60">{l.num}</span>
+                      <span className="text-[9px] opacity-50">{l.num}</span>
                       {l.label}
                     </span>
                   </a>

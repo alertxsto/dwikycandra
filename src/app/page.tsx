@@ -1,7 +1,6 @@
 'use client'
 
 import Cursor from '@/components/portfolio/cursor'
-import ScrollProgress from '@/components/portfolio/scroll-progress'
 import Navbar from '@/components/portfolio/navbar'
 import SideRail from '@/components/portfolio/side-rail'
 import Hero from '@/components/portfolio/hero'
@@ -16,7 +15,6 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
       <Cursor />
-      <ScrollProgress />
       <Navbar />
       <SideRail />
       <main className="flex-1">
