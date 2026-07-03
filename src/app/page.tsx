@@ -3,6 +3,7 @@
 import Cursor from '@/components/portfolio/cursor'
 import ScrollProgress from '@/components/portfolio/scroll-progress'
 import Navbar from '@/components/portfolio/navbar'
+import SideRail from '@/components/portfolio/side-rail'
 import Hero from '@/components/portfolio/hero'
 import About from '@/components/portfolio/about'
 import Projects from '@/components/portfolio/projects'
@@ -17,6 +18,7 @@ export default function Home() {
       <Cursor />
       <ScrollProgress />
       <Navbar />
+      <SideRail />
       <main className="flex-1">
         <Hero />
         <About />
