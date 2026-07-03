@@ -1,30 +1,25 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 
 const links = [
-  { label: 'Index', href: '#hero', num: '01' },
-  { label: 'About', href: '#about', num: '02' },
-  { label: 'Work', href: '#work', num: '03' },
-  { label: 'Skills', href: '#skills', num: '04' },
-  { label: 'Contact', href: '#contact', num: '05' },
+  { label: 'Index', href: '#hero', id: 'hero' },
+  { label: 'About', href: '#about', id: 'about' },
+  { label: 'Work', href: '#work', id: 'work' },
+  { label: 'Skills', href: '#skills', id: 'skills' },
+  { label: 'Contact', href: '#contact', id: 'contact' },
 ]
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [open, setOpen] = useState(false)
-  const [time, setTime] = useState('')
   const [active, setActive] = useState('hero')
+  const [time, setTime] = useState('')
+  const navRef = useRef<HTMLElement>(null)
+  const activeHlRef = useRef<HTMLSpanElement>(null)
+  const hoverHlRef = useRef<HTMLSpanElement>(null)
+  const isScrollingRef = useRef(false)
+  const leaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50)
-    onScroll()
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
+  // Live clock
   useEffect(() => {
     const update = () => {
       const d = new Date()
@@ -41,154 +36,146 @@ export default function Navbar() {
     return () => clearInterval(i)
   }, [])
 
-  // Active section detection
+  // Active section via IntersectionObserver
   useEffect(() => {
-    const sections = links.map((l) => document.querySelector(l.href))
-    const observer = new IntersectionObserver(
+    const sections = links
+      .map((l) => document.getElementById(l.id))
+      .filter(Boolean) as HTMLElement[]
+    if (!sections.length) return
+
+    const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.target.id) {
+          if (entry.isIntersecting && !isScrollingRef.current) {
             setActive(entry.target.id)
           }
         })
       },
-      { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
+      { root: null, rootMargin: '-40% 0px -40% 0px', threshold: 0 }
     )
-    sections.forEach((s) => s && observer.observe(s))
-    return () => observer.disconnect()
+    sections.forEach((s) => obs.observe(s))
+    return () => obs.disconnect()
+  }, [])
+
+  // Move active highlight pill when `active` changes
+  useEffect(() => {
+    const nav = navRef.current
+    const hl = activeHlRef.current
+    if (!nav || !hl) return
+    const activeEl = nav.querySelector<HTMLAnchorElement>('a[data-active="true"]')
+    if (!activeEl) {
+      hl.style.opacity = '0'
+      return
+    }
+    const navRect = nav.getBoundingClientRect()
+    const r = activeEl.getBoundingClientRect()
+    const left = r.left - navRect.left + nav.scrollLeft
+    hl.style.left = `${left}px`
+    hl.style.width = `${r.width}px`
+    hl.style.opacity = '1'
+  }, [active])
+
+  // Hover pill follow (vanilla DOM mutation — no React re-render)
+  useEffect(() => {
+    const nav = navRef.current
+    const hoverHl = hoverHlRef.current
+    if (!nav || !hoverHl) return
+
+    const onLinkEnter = (e: Event) => {
+      const target = e.currentTarget as HTMLAnchorElement
+      const navRect = nav.getBoundingClientRect()
+      const r = target.getBoundingClientRect()
+      const left = r.left - navRect.left + nav.scrollLeft
+      hoverHl.style.left = `${left}px`
+      hoverHl.style.width = `${r.width}px`
+      hoverHl.style.opacity = '1'
+      if (leaveTimerRef.current) {
+        clearTimeout(leaveTimerRef.current)
+        leaveTimerRef.current = null
+      }
+    }
+    const onNavLeave = () => {
+      leaveTimerRef.current = setTimeout(() => {
+        hoverHl.style.opacity = '0'
+      }, 150)
+    }
+
+    const anchors = nav.querySelectorAll('a')
+    anchors.forEach((a) => a.addEventListener('mouseenter', onLinkEnter))
+    nav.addEventListener('mouseleave', onNavLeave)
+    return () => {
+      anchors.forEach((a) => a.removeEventListener('mouseenter', onLinkEnter))
+      nav.removeEventListener('mouseleave', onNavLeave)
+      if (leaveTimerRef.current) clearTimeout(leaveTimerRef.current)
+    }
+  }, [])
+
+  // Smooth scroll on click with active lock
+  const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
+    const href = e.currentTarget.getAttribute('href')
+    if (!href) return
+    e.preventDefault()
+    const targetId = href.substring(1)
+    const target = document.getElementById(targetId)
+    if (!target) return
+
+    isScrollingRef.current = true
+    setActive(targetId)
+
+    const navbarHeight = 80
+    const targetRect = target.getBoundingClientRect()
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+    const targetPosition = targetRect.top + scrollTop - navbarHeight - 20
+
+    window.scrollTo({ top: targetPosition, behavior: 'smooth' })
+    setTimeout(() => {
+      isScrollingRef.current = false
+    }, 800)
+    window.history.replaceState(null, '', href)
   }, [])
 
   return (
-    <>
-      {/* Floating pill nav — desktop + mobile */}
-      <motion.div
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-3xl"
-      >
-        <nav
-          className={`flex items-center justify-between gap-2 md:gap-4 px-3 md:px-4 py-2.5 md:py-3 rounded-full border transition-all duration-300 ${
-            scrolled
-              ? 'bg-background/80 backdrop-blur-xl border-border shadow-2xl shadow-black/40'
-              : 'bg-background/40 backdrop-blur-md border-border/50'
-          }`}
-        >
-          {/* Logo */}
-          <a
-            href="#hero"
-            className="flex items-center gap-2.5 shrink-0 pl-1"
-            aria-label="Dwiky Candra home"
-          >
-            <div className="w-7 h-7 md:w-8 md:h-8 bg-accent text-accent-foreground flex items-center justify-center font-display font-bold text-base md:text-lg rounded-full">
-              D
-            </div>
-            <span className="font-display font-semibold text-xs md:text-sm tracking-tight hidden sm:inline">
-              DWIKY<span className="text-accent">.</span>DEV
-            </span>
-          </a>
-
-          {/* Center links — desktop only */}
-          <ul className="hidden md:flex items-center gap-1">
-            {links.map((l) => {
-              const isActive = active === l.href.slice(1)
-              return (
-                <li key={l.href}>
-                  <a
-                    href={l.href}
-                    className={`relative px-3 lg:px-4 py-2 rounded-full font-mono text-[11px] uppercase tracking-wider transition-colors ${
-                      isActive
-                        ? 'text-accent'
-                        : 'text-muted-foreground hover:text-foreground'
-                    }`}
-                  >
-                    {/* Tiny top tick indicator for active */}
-                    {isActive && (
-                      <motion.span
-                        layoutId="nav-tick"
-                        className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-accent"
-                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                      />
-                    )}
-                    <span className="relative z-10 flex items-baseline gap-1.5">
-                      <span className="text-[9px] opacity-50">{l.num}</span>
-                      {l.label}
-                    </span>
-                  </a>
-                </li>
-              )
-            })}
-          </ul>
-
-          {/* Right side: clock + mobile menu button */}
-          <div className="flex items-center gap-2 shrink-0">
-            <div className="hidden md:flex items-center gap-2 font-mono text-[10px] text-muted-foreground pr-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              {time}
-            </div>
-            <button
-              className="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-border text-foreground hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all"
-              onClick={() => setOpen(true)}
-              aria-label="Open menu"
-            >
-              <Menu size={18} />
-            </button>
-          </div>
-        </nav>
-      </motion.div>
-
-      {/* Mobile fullscreen menu */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[70] bg-background/95 backdrop-blur-xl flex flex-col p-6 md:hidden"
-          >
-            <div className="flex justify-between items-center mb-12">
-              <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                — Menu
-              </div>
-              <button
-                onClick={() => setOpen(false)}
-                aria-label="Close menu"
-                className="w-10 h-10 flex items-center justify-center rounded-full border border-border hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all"
-              >
-                <X size={20} />
-              </button>
-            </div>
-            <ul className="flex flex-col gap-2">
-              {links.map((l, i) => (
-                <motion.li
-                  key={l.href}
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.06 }}
-                >
-                  <a
-                    href={l.href}
-                    onClick={() => setOpen(false)}
-                    className="group flex items-baseline gap-4 py-3 border-b border-border"
-                  >
-                    <span className="font-mono text-xs text-accent">{l.num}</span>
-                    <span className="font-display font-bold text-5xl tracking-tight group-hover:text-accent transition-colors">
-                      {l.label}
-                    </span>
-                  </a>
-                </motion.li>
-              ))}
-            </ul>
-            <div className="mt-auto pt-8 flex items-center justify-between font-mono text-xs uppercase tracking-widest text-muted-foreground">
-              <span className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                {time}
+    <header className="site-nav">
+      <div className="nav-inner">
+        {/* Brand: glitch "Dwiky" + floating accent ".Dev" */}
+        <a href="#hero" className="brand" aria-label="Dwiky Candra home" data-cursor="hover">
+          <div className="brand-inner">
+            <div className="brand-bg" aria-hidden />
+            <div className="brand-text">
+              <span className="glitch-text" data-text="Dwiky">
+                Dwiky
               </span>
-              <span>Indonesia · UTC+7</span>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+            <div className="brand-accent" aria-hidden>
+              <span className="float-text">.dev</span>
+              <span className="glow" />
+            </div>
+          </div>
+        </a>
+
+        {/* Nav links with morphing active + hover pills */}
+        <nav ref={navRef} aria-label="Main navigation">
+          <span className="nav-highlight-active" ref={activeHlRef} aria-hidden />
+          <span className="nav-highlight-hover" ref={hoverHlRef} aria-hidden />
+          {links.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={handleNavClick}
+              data-active={active === l.id}
+              data-cursor="hover"
+            >
+              {l.label}
+            </a>
+          ))}
+        </nav>
+
+        {/* Live clock — hidden on small */}
+        <div className="nav-clock" aria-hidden>
+          <span className="nav-clock-dot" />
+          {time}
+        </div>
+      </div>
+    </header>
   )
 }
