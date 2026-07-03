@@ -1,25 +1,40 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Quote } from 'lucide-react'
 
-const testimonials = [
+interface Testimonial {
+  metric: string
+  metricLabel: string
+  text: string
+  who: string
+  role: string
+}
+
+const testimonials: Testimonial[] = [
   {
+    metric: '95%',
+    metricLabel: 'test coverage',
     text: 'Delivered production-ready code with 95% test coverage. Consistently meets deadlines with clean, maintainable solutions.',
     who: 'IDCamp Technical Mentor',
     role: 'Generative AI Engineering',
   },
   {
+    metric: '65%',
+    metricLabel: 'load faster',
     text: 'Led frontend architecture decisions that reduced load time by 65%. Strong technical leadership and clear communication.',
     who: 'Team Lead',
     role: 'Career Pods Explorer',
   },
   {
+    metric: '2wks',
+    metricLabel: 'ahead of schedule',
     text: 'Exceeded project requirements. Delivered 2 weeks early with comprehensive documentation and 99.5% uptime.',
     who: 'Client',
     role: 'President FoodConnect',
   },
   {
+    metric: '99.5%',
+    metricLabel: 'uptime post-launch',
     text: 'Intuitive UI with flawless mobile responsiveness. Performance optimizations made the app feel instant.',
     who: 'Beta Tester',
     role: 'Z Studio',
@@ -28,16 +43,16 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="relative py-24 md:py-32 px-6 md:px-10 border-t border-border bg-secondary/30">
+    <section className="relative py-24 md:py-32 px-6 md:px-10 border-t border-border">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-4 mb-12 md:mb-20">
-          <span className="font-mono text-xs uppercase tracking-widest text-accent">[✦]</span>
+          <span className="font-mono text-xs uppercase tracking-widest text-accent">[03.5]</span>
           <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-            What People Say
+            Receipts
           </span>
           <div className="flex-1 h-px bg-border" />
           <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-            (04 Quotes)
+            (04 Verified)
           </span>
         </div>
 
@@ -48,7 +63,7 @@ export default function Testimonials() {
           transition={{ duration: 0.7 }}
           className="font-display font-medium text-[clamp(1.75rem,4vw,3.5rem)] leading-tight tracking-tight max-w-4xl mb-16 md:mb-20"
         >
-          Receipts from mentors, leads, and clients who shipped with me.
+          Numbers from mentors, leads, and clients who shipped with me.
         </motion.h2>
 
         <div className="grid md:grid-cols-2 gap-px bg-border border border-border">
@@ -59,22 +74,30 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08, duration: 0.5 }}
-              className="bg-background p-8 md:p-10 group hover:bg-secondary transition-colors relative"
+              className="bg-background p-8 md:p-10 group hover:bg-accent hover:text-accent-foreground transition-colors duration-300 relative flex flex-col"
+              data-cursor="hover"
             >
-              <Quote
-                size={40}
-                className="text-accent mb-6 opacity-60 group-hover:opacity-100 transition-opacity"
-              />
-              <blockquote className="text-lg md:text-xl text-foreground leading-relaxed mb-6">
-                {t.text}
+              {/* Big metric — the visual hook */}
+              <div className="flex items-baseline gap-3 mb-6">
+                <span className="font-display font-bold text-[clamp(3.5rem,8vw,6rem)] leading-none tracking-tighter text-accent group-hover:text-accent-foreground transition-colors">
+                  {t.metric}
+                </span>
+                <span className="font-mono text-[10px] md:text-xs uppercase tracking-widest text-muted-foreground group-hover:text-accent-foreground/70 transition-colors pb-2">
+                  {t.metricLabel}
+                </span>
+              </div>
+
+              <blockquote className="text-sm md:text-base text-muted-foreground group-hover:text-accent-foreground/85 leading-relaxed mb-6 flex-1">
+                &ldquo;{t.text}&rdquo;
               </blockquote>
-              <figcaption className="flex items-center gap-3 pt-6 border-t border-border">
-                <div className="w-10 h-10 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-display font-bold shrink-0">
-                  {t.who.charAt(0)}
+
+              <figcaption className="flex items-center gap-3 pt-6 border-t border-border group-hover:border-accent-foreground/20 transition-colors">
+                <div className="font-mono text-[10px] uppercase tracking-widest text-accent group-hover:text-accent-foreground">
+                  {String(i + 1).padStart(2, '0')} / 04
                 </div>
-                <div>
-                  <div className="font-display font-semibold text-sm">{t.who}</div>
-                  <div className="font-mono text-xs text-muted-foreground uppercase tracking-wider">
+                <div className="flex-1 min-w-0">
+                  <div className="font-display font-semibold text-sm truncate">{t.who}</div>
+                  <div className="font-mono text-[10px] text-muted-foreground group-hover:text-accent-foreground/60 uppercase tracking-wider truncate">
                     {t.role}
                   </div>
                 </div>
