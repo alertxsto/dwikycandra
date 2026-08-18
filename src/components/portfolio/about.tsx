@@ -35,9 +35,9 @@ function Counter({ to, suffix = '' }: { to: number; suffix?: string }) {
 
 const stats = [
   { value: 1247, suffix: '+', label: 'Active learners', note: 'ZeroCode platform' },
-  { value: 15, suffix: '+', label: 'Projects shipped', note: 'production · real users' },
+  { value: 16, suffix: '+', label: 'Projects shipped', note: 'production · real users' },
+  { value: 370, suffix: '+', label: 'Automated tests', note: '93% coverage · PyPI library' },
   { value: 4, suffix: '', label: 'Pro certifications', note: 'IBM × IDCamp × DBS × AWS' },
-  { value: 7, suffix: '', label: 'Distros tested', note: 'Tumbleweed won' },
 ]
 
 export default function About() {
@@ -114,13 +114,13 @@ export default function About() {
               something breaks, I roll back. When it doesn&apos;t, I ship.
             </p>
             <p>
-              My flagship work is{' '}
-              <span className="text-foreground font-medium">ZeroCode</span>, a cyberpunk-themed
-              coding academy with a browser IDE, AI assistant (Gemini-powered Nebula), and a custom
-              virtual Git. I also maintain{' '}
-              <span className="text-foreground font-medium">kydev</span>, my personal command
-              center. Currently exploring WebGPU, Hermes agent patterns, and self-hosted LLM
-              inference on Linux.
+              I build and maintain{' '}
+              <span className="text-foreground font-medium">Luminary Memory</span>, an open-source
+              self-hosted memory layer on PyPI for autonomous AI agents. Alongside{' '}
+              <span className="text-foreground font-medium">ZeroCode</span> (coding academy with a browser
+              Monaco IDE) and <span className="text-foreground font-medium">kydev</span> (native Linux
+              dashboard), I focus on local ONNX inference, Hermes agent orchestration, and bulletproof
+              systems programming on Linux.
             </p>
           </div>
         </div>

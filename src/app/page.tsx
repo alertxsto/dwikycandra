@@ -1,5 +1,3 @@
-'use client'
-
 import Cursor from '@/components/portfolio/cursor'
 import Navbar from '@/components/portfolio/navbar'
 import SideRail from '@/components/portfolio/side-rail'

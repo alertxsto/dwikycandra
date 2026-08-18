@@ -13,7 +13,7 @@ interface SkillGroup {
 const skillGroups: SkillGroup[] = [
   {
     title: 'Agentic AI',
-    items: ['Hermes', 'LangChain', 'LangGraph', 'RAG', 'OpenAI', 'Groq', 'Gemini', 'Vector DBs'],
+    items: ['Hermes Agent', 'Luminary Memory', 'FastEmbed / ONNX', 'LangGraph', 'RRF Fusion', 'Knowledge Graphs', 'Vector DBs', 'RAG Pipelines'],
     accent: 'text-lime-300',
     pillAccent: 'hover:bg-lime-300 hover:text-lime-950 hover:border-lime-300',
   },
@@ -25,13 +25,13 @@ const skillGroups: SkillGroup[] = [
   },
   {
     title: 'Frontend',
-    items: ['TypeScript', 'React 19', 'Next.js 14', 'Tailwind CSS', 'Vite', 'Framer Motion'],
+    items: ['TypeScript', 'React 19', 'Next.js 16', 'Tailwind CSS', 'Vite', 'Framer Motion'],
     accent: 'text-foreground',
     pillAccent: 'hover:bg-foreground hover:text-background hover:border-foreground',
   },
   {
-    title: 'Backend',
-    items: ['Node.js', 'PostgreSQL', 'Prisma', 'tRPC', 'JWT', 'Vercel Serverless'],
+    title: 'Backend & Systems',
+    items: ['Python (Systems)', 'Node.js', 'PostgreSQL / pgvector', 'SQLite / FTS5', 'Rust / Tauri', 'Prisma'],
     accent: 'text-orange-300',
     pillAccent: 'hover:bg-orange-300 hover:text-orange-950 hover:border-orange-300',
   },
@@ -41,6 +41,7 @@ const marqueeItems = [
   'AGENTIC AI',
   'TUMBLEWEED DAILY',
   'COFFEE → CODE → AUTONOMY',
+  'LUMINARY MEMORY',
   'SHIP BOLD',
   'RAG PIPELINES',
   'OPEN SOURCE',

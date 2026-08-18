@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowUpRight, ChevronDown, Cpu, Database, Boxes, Network, Terminal, Package, Layers, Bot, Code2, Trophy, GitBranch, Sparkles, Brain, Wrench, FlaskConical, Users, ListChecks, AlertTriangle, HeartHandshake, Bell, ShieldCheck, Moon } from 'lucide-react'
+import { ArrowUpRight, ChevronDown, Cpu, Database, Boxes, Network, Terminal, Package, Layers, Bot, Code2, Trophy, GitBranch, Sparkles, Brain, Users, ListChecks, AlertTriangle, HeartHandshake, Bell, ShieldCheck, Moon } from 'lucide-react'
 import { useRef, useState } from 'react'
 
 interface Feature {
@@ -28,6 +28,35 @@ interface Project {
 const projects: Project[] = [
   {
     num: '01',
+    title: 'LUMINARY MEMORY',
+    tagline: 'A lightweight, self-hosted memory layer for AI agents. 4-strategy parallel fusion (ONNX, SQLite FTS5, temporal, graph), DB-backed core memory, and first-class Hermes Agent provider.',
+    category: 'Agentic AI / Python Library',
+    year: '2026',
+    role: 'Creator · Lead Architect',
+    hue: 'from-indigo-400 to-purple-600',
+    href: 'https://github.com/alertxsto/luminary-memory',
+    external: true,
+    status: 'Live · v0.2.16 on PyPI',
+    techStack: ['Python 3.11+', 'FastEmbed (ONNX)', 'SQLite (FTS5)', 'pgvector', 'Hermes Agent', 'NumPy', 'Pytest (93% cov)', 'RRF'],
+    features: [
+      { icon: Brain, label: '4-Way Parallel Fusion — ONNX vector, FTS5 BM25, temporal decay, entity graph' },
+      { icon: Layers, label: 'Core Memory (DB-Backed) — auto-loaded into system prompt every session' },
+      { icon: Sparkles, label: 'Adaptive Importance — recalled memories climb into persistent context dynamically' },
+      { icon: ShieldCheck, label: 'Rule Hygiene — rule pinning at ≥0.9, auto-replace anti-contradiction' },
+      { icon: Network, label: 'Rule-Aware Query Expansion — lossless expansion when graph has no entity' },
+      { icon: Database, label: 'Content-Level Anti-Duplication — core, persistent, and recall never duplicate' },
+      { icon: Cpu, label: 'Autonomous Lifecycle — TTL cleanup, semantic consolidation, health score (0-100)' },
+      { icon: Bot, label: 'Hermes Agent Provider — per-turn prefetch (1.2ms latency), 29 dashboard fields' },
+    ],
+    metrics: [
+      { label: 'Version', value: 'v0.2.16' },
+      { label: 'Coverage', value: '93%' },
+      { label: 'Tests', value: '370+' },
+      { label: 'Cloud Tokens', value: '0' },
+    ],
+  },
+  {
+    num: '02',
     title: 'KYDEV TOOLBOX',
     tagline: 'The ultimate native Linux Developer Dashboard. 1-click graphical UX for daily system management & dev tasks — built with Rust + Tauri.',
     category: 'Linux / Native Dev Tool',
@@ -56,7 +85,7 @@ const projects: Project[] = [
     ],
   },
   {
-    num: '02',
+    num: '03',
     title: 'ZEROCODE',
     tagline: 'Cyberpunk-themed coding academy. 19 production courses, browser-based Monaco IDE, multi-engine execution, AI assistant, and full virtual Git environment.',
     category: 'E-Learning / Web App',
@@ -85,34 +114,34 @@ const projects: Project[] = [
     ],
   },
   {
-    num: '03',
-    title: 'HERMES LAB',
-    tagline: 'Personal R&D lab for agentic AI — Hermes-style orchestration, RAG pipelines, and tool-using LLM agents. Experiments in planning, memory, and multi-step reasoning. Honest WIP, not a product.',
-    category: 'Agentic AI / R&D',
+    num: '04',
+    title: 'DISTROWAR',
+    tagline: 'Linux distro comparison publication. Live data from DistroWatch for 492+ distros, head-to-head battle arena across 8 technical dimensions, a 19-question finder quiz, and community voting.',
+    category: 'Web App / Linux',
     year: '2026',
-    role: 'Solo exploration',
-    hue: 'from-lime-300 to-emerald-500',
+    role: 'Creator · Solo',
+    hue: 'from-orange-400 to-red-600',
     href: 'https://github.com/alertxsto',
     external: true,
-    status: 'WIP · Experiments',
-    techStack: ['Python', 'LangChain', 'LangGraph', 'Groq', 'ChromaDB', 'Ollama', 'Hermes', 'FastAPI'],
+    status: 'Live · Personal Project',
+    techStack: ['Next.js 16', 'TypeScript', 'Prisma', 'SQLite', 'Tailwind CSS', 'Framer Motion', 'shadcn/ui'],
     features: [
-      { icon: Brain, label: 'Hermes-style orchestration — planner + executor + memory loop' },
-      { icon: Database, label: 'RAG over personal notes — ChromaDB + Groq embeddings' },
-      { icon: Wrench, label: 'Tool-using agents — web search, code exec, file ops' },
-      { icon: Cpu, label: 'Local-first inference — Ollama for self-hosted LLMs on Tumbleweed' },
-      { icon: GitBranch, label: 'Multi-agent graph — LangGraph state machine workflows' },
-      { icon: FlaskConical, label: 'Eval harness — measure agent accuracy vs cost tradeoffs' },
+      { icon: Database, label: 'Live Leaderboard — 492+ distros, 4 time periods, trend arrows' },
+      { icon: Cpu, label: 'Battle Arena — 8-dimension technical head-to-head, no popularity bias' },
+      { icon: Brain, label: '19-question Finder Quiz — 3-stage scoring engine, weighted 35/40/25' },
+      { icon: Users, label: 'Community Voting — 1 vote/session, IP-stamped, shown on leaderboard' },
+      { icon: Terminal, label: 'Admin Dashboard — password-protected, trigger live DistroWatch scrape' },
+      { icon: GitBranch, label: 'Data Pipeline — manual seed + rule-based inference + LLM enrichment' },
     ],
     metrics: [
-      { label: 'Status', value: 'WIP' },
-      { label: 'Models', value: '4+' },
-      { label: 'Tools wired', value: '6+' },
-      { label: 'Hosting', value: 'Local' },
+      { label: 'Distros', value: '492+' },
+      { label: 'Quiz steps', value: '19' },
+      { label: 'Battle dims', value: '8' },
+      { label: 'License', value: 'MIT' },
     ],
   },
   {
-    num: '04',
+    num: '05',
     title: 'SYNCOLOGY',
     tagline: 'Collaborative task manager for IT teams. Desktop app with real-time room sync, peer review, smart escalation, and a Ghost Pool where abandoned tasks become fair game for anyone to rescue.',
     category: 'Desktop / Real-time Collab',
@@ -354,8 +383,8 @@ export default function Projects() {
           transition={{ duration: 0.7 }}
           className="font-display font-medium text-[clamp(2rem,5vw,4.5rem)] leading-tight tracking-tight max-w-4xl mb-16 md:mb-24"
         >
-          Four builds — <span className="text-accent">one ships on Linux desktops</span>,
-          one teaches coding, one explores agentic AI, one orchestrates IT teams.
+          Five builds — <span className="text-accent">one powers agentic AI memory</span>,
+          one ships on Linux desktops, one teaches coding, one compares 492+ distros, one orchestrates IT teams.
         </motion.h2>
 
         <div>

@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState, useCallback } from 'react'
+import { useLocalClock } from '@/hooks/use-local-clock'
 
 const links = [
   { label: 'Index', href: '#hero', id: 'hero' },
@@ -12,29 +13,12 @@ const links = [
 
 export default function Navbar() {
   const [active, setActive] = useState('hero')
-  const [time, setTime] = useState('')
+  const time = useLocalClock()
   const navRef = useRef<HTMLElement>(null)
   const activeHlRef = useRef<HTMLSpanElement>(null)
   const hoverHlRef = useRef<HTMLSpanElement>(null)
   const isScrollingRef = useRef(false)
   const leaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-
-  // Live clock
-  useEffect(() => {
-    const update = () => {
-      const d = new Date()
-      const opts: Intl.DateTimeFormatOptions = {
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: false,
-        timeZone: 'Asia/Jakarta',
-      }
-      setTime(new Intl.DateTimeFormat('en-GB', opts).format(d) + ' WIB')
-    }
-    update()
-    const i = setInterval(update, 1000)
-    return () => clearInterval(i)
-  }, [])
 
   // Active section via IntersectionObserver
   useEffect(() => {

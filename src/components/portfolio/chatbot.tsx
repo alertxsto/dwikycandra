@@ -31,7 +31,6 @@ export default function ChatBot() {
   const [messages, setMessages] = useState<Message[]>([WELCOME_MESSAGE])
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
-  const [hasInteracted, setHasInteracted] = useState(false)
   const scrollRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -49,13 +48,6 @@ export default function ChatBot() {
     }
   }, [isOpen])
 
-  // Pulsing hint after 3s, dismiss on first interaction
-  useEffect(() => {
-    if (hasInteracted) return
-    const t = setTimeout(() => setHasInteracted(false), 8000)
-    return () => clearTimeout(t)
-  }, [hasInteracted])
-
   const sendMessage = async (text: string) => {
     const trimmed = text.trim()
     if (!trimmed || isTyping) return
@@ -71,7 +63,6 @@ export default function ChatBot() {
     setMessages(newMessages)
     setInput('')
     setIsTyping(true)
-    setHasInteracted(true)
 
     try {
       const res = await fetch('/api/chat', {
@@ -114,10 +105,6 @@ export default function ChatBot() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     sendMessage(input)
-  }
-
-  const handleSuggestion = (s: string) => {
-    sendMessage(s)
   }
 
   return (
@@ -219,7 +206,7 @@ export default function ChatBot() {
                     {SUGGESTIONS.map((s) => (
                       <button
                         key={s}
-                        onClick={() => handleSuggestion(s)}
+                        onClick={() => sendMessage(s)}
                         className="text-left text-xs font-mono px-3 py-2 border border-border rounded-full text-muted-foreground hover:text-accent hover:border-accent transition-colors"
                         data-cursor="hover"
                       >

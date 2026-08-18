@@ -7,6 +7,9 @@ export default function Cursor() {
   const ringRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    // Don't run custom cursor logic on touch devices (cursor is hidden via CSS anyway)
+    if (window.matchMedia('(hover: none)').matches) return
+
     const dot = dotRef.current
     const ring = ringRef.current
     if (!dot || !ring) return

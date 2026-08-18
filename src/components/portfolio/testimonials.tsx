@@ -43,7 +43,7 @@ const testimonials: Testimonial[] = [
 
 export default function Testimonials() {
   return (
-    <section className="relative py-24 md:py-32 px-6 md:px-10 border-t border-border">
+    <section id="testimonials" className="relative py-24 md:py-32 px-6 md:px-10 border-t border-border">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-4 mb-12 md:mb-20">
           <span className="font-mono text-xs uppercase tracking-widest text-accent">[03.5]</span>

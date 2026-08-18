@@ -1,25 +1,9 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useLocalClock } from '@/hooks/use-local-clock'
 
 export default function Footer() {
-  const [time, setTime] = useState('')
-
-  useEffect(() => {
-    const update = () => {
-      const d = new Date()
-      const opts: Intl.DateTimeFormatOptions = {
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: false,
-        timeZone: 'Asia/Jakarta',
-      }
-      setTime(new Intl.DateTimeFormat('en-GB', opts).format(d) + ' WIB')
-    }
-    update()
-    const i = setInterval(update, 1000)
-    return () => clearInterval(i)
-  }, [])
+  const time = useLocalClock()
 
   return (
     <footer className="relative mt-auto border-t border-border bg-background">
