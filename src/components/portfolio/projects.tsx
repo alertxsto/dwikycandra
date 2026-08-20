@@ -39,14 +39,14 @@ const projects: Project[] = [
     status: 'Live · v0.2.16 on PyPI',
     techStack: ['Python 3.11+', 'FastEmbed (ONNX)', 'SQLite (FTS5)', 'pgvector', 'Hermes Agent', 'NumPy', 'Pytest (93% cov)', 'RRF'],
     features: [
-      { icon: Brain, label: '4-Way Parallel Fusion — ONNX vector, FTS5 BM25, temporal decay, entity graph' },
-      { icon: Layers, label: 'Core Memory (DB-Backed) — auto-loaded into system prompt every session' },
-      { icon: Sparkles, label: 'Adaptive Importance — recalled memories climb into persistent context dynamically' },
-      { icon: ShieldCheck, label: 'Rule Hygiene — rule pinning at ≥0.9, auto-replace anti-contradiction' },
-      { icon: Network, label: 'Rule-Aware Query Expansion — lossless expansion when graph has no entity' },
-      { icon: Database, label: 'Content-Level Anti-Duplication — core, persistent, and recall never duplicate' },
-      { icon: Cpu, label: 'Autonomous Lifecycle — TTL cleanup, semantic consolidation, health score (0-100)' },
-      { icon: Bot, label: 'Hermes Agent Provider — per-turn prefetch (1.2ms latency), 29 dashboard fields' },
+      { icon: Brain, label: '4-Way Parallel Fusion - ONNX vector, FTS5 BM25, temporal decay, entity graph' },
+      { icon: Layers, label: 'Core Memory (DB-Backed) - auto-loaded into system prompt every session' },
+      { icon: Sparkles, label: 'Adaptive Importance - recalled memories climb into persistent context dynamically' },
+      { icon: ShieldCheck, label: 'Rule Hygiene - rule pinning at ≥0.9, auto-replace anti-contradiction' },
+      { icon: Network, label: 'Rule-Aware Query Expansion - lossless expansion when graph has no entity' },
+      { icon: Database, label: 'Content-Level Anti-Duplication - core, persistent, and recall never duplicate' },
+      { icon: Cpu, label: 'Autonomous Lifecycle - TTL cleanup, semantic consolidation, health score (0-100)' },
+      { icon: Bot, label: 'Hermes Agent Provider - per-turn prefetch (1.2ms latency), 29 dashboard fields' },
     ],
     metrics: [
       { label: 'Version', value: 'v0.2.16' },
@@ -58,7 +58,7 @@ const projects: Project[] = [
   {
     num: '02',
     title: 'KYDEV TOOLBOX',
-    tagline: 'The ultimate native Linux Developer Dashboard. 1-click graphical UX for daily system management & dev tasks — built with Rust + Tauri.',
+    tagline: 'The ultimate native Linux Developer Dashboard. 1-click graphical UX for daily system management & dev tasks - built with Rust + Tauri.',
     category: 'Linux / Native Dev Tool',
     year: '2026',
     role: 'Creator · Solo',
@@ -68,14 +68,14 @@ const projects: Project[] = [
     status: 'Live · v0.8.8',
     techStack: ['Rust', 'Tauri', 'React', 'TypeScript', 'Tailwind', 'daisyUI', 'Shell', 'pkexec'],
     features: [
-      { icon: Boxes, label: 'Mega Environments — 1-click bootstrap 100+ toolchains' },
-      { icon: Layers, label: 'Project Bootstrapper — Next.js, Vite+React, Rust, Go, Python' },
-      { icon: Package, label: 'Docker Manager — visual compose.yml builder' },
-      { icon: Database, label: 'DB Studio & Connection Doctor — auto-heal down services' },
-      { icon: Network, label: 'Built-in API Tester — mini-Postman, CORS bypass via native curl' },
-      { icon: Terminal, label: 'Localhost Tunneling — expose dev server via localtunnel' },
-      { icon: Cpu, label: 'Native DNF Manager — search, install, history' },
-      { icon: Sparkles, label: 'Persistent Workspace State — switch tasks, lose nothing' },
+      { icon: Boxes, label: 'Mega Environments - 1-click bootstrap 100+ toolchains' },
+      { icon: Layers, label: 'Project Bootstrapper - Next.js, Vite+React, Rust, Go, Python' },
+      { icon: Package, label: 'Docker Manager - visual compose.yml builder' },
+      { icon: Database, label: 'DB Studio & Connection Doctor - auto-heal down services' },
+      { icon: Network, label: 'Built-in API Tester - mini-Postman, CORS bypass via native curl' },
+      { icon: Terminal, label: 'Localhost Tunneling - expose dev server via localtunnel' },
+      { icon: Cpu, label: 'Native DNF Manager - search, install, history' },
+      { icon: Sparkles, label: 'Persistent Workspace State - switch tasks, lose nothing' },
     ],
     metrics: [
       { label: 'Version', value: '0.8.8' },
@@ -97,14 +97,14 @@ const projects: Project[] = [
     status: 'Live · 1,247+ users',
     techStack: ['React 19', 'Vite', 'PostgreSQL', 'Monaco Editor', 'Pyodide', 'Gemini AI', 'Framer Motion', 'Tailwind'],
     features: [
-      { icon: Code2, label: 'Browser-based Monaco IDE — multi-file, IntelliSense, cyberpunk theme' },
-      { icon: Terminal, label: 'Multi-Engine Runner — Python (Pyodide WASM), React, TS, Vue, virtual Git' },
-      { icon: Bot, label: 'Nebula AI — Gemini Flash + RAG, <500ms context-aware hints' },
-      { icon: Trophy, label: 'Gamification — XP, 5-tier ranks, streaks, 365-day heatmap' },
-      { icon: GitBranch, label: 'Virtual Terminal — 50+ commands incl. full Git workflow sim' },
-      { icon: Layers, label: 'Neural Tech Tree — 3D hexagon map of 19 courses' },
-      { icon: Database, label: 'Ghost Progress Detection — flags outdated refactored content' },
-      { icon: Sparkles, label: 'Community Forum — tier badges, votes, category filters' },
+      { icon: Code2, label: 'Browser-based Monaco IDE - multi-file, IntelliSense, cyberpunk theme' },
+      { icon: Terminal, label: 'Multi-Engine Runner - Python (Pyodide WASM), React, TS, Vue, virtual Git' },
+      { icon: Bot, label: 'Nebula AI - Gemini Flash + RAG, <500ms context-aware hints' },
+      { icon: Trophy, label: 'Gamification - XP, 5-tier ranks, streaks, 365-day heatmap' },
+      { icon: GitBranch, label: 'Virtual Terminal - 50+ commands incl. full Git workflow sim' },
+      { icon: Layers, label: 'Neural Tech Tree - 3D hexagon map of 19 courses' },
+      { icon: Database, label: 'Ghost Progress Detection - flags outdated refactored content' },
+      { icon: Sparkles, label: 'Community Forum - tier badges, votes, category filters' },
     ],
     metrics: [
       { label: 'Courses', value: '19' },
@@ -126,12 +126,12 @@ const projects: Project[] = [
     status: 'Live · Personal Project',
     techStack: ['Next.js 16', 'TypeScript', 'Prisma', 'SQLite', 'Tailwind CSS', 'Framer Motion', 'shadcn/ui'],
     features: [
-      { icon: Database, label: 'Live Leaderboard — 492+ distros, 4 time periods, trend arrows' },
-      { icon: Cpu, label: 'Battle Arena — 8-dimension technical head-to-head, no popularity bias' },
-      { icon: Brain, label: '19-question Finder Quiz — 3-stage scoring engine, weighted 35/40/25' },
-      { icon: Users, label: 'Community Voting — 1 vote/session, IP-stamped, shown on leaderboard' },
-      { icon: Terminal, label: 'Admin Dashboard — password-protected, trigger live DistroWatch scrape' },
-      { icon: GitBranch, label: 'Data Pipeline — manual seed + rule-based inference + LLM enrichment' },
+      { icon: Database, label: 'Live Leaderboard - 492+ distros, 4 time periods, trend arrows' },
+      { icon: Cpu, label: 'Battle Arena - 8-dimension technical head-to-head, no popularity bias' },
+      { icon: Brain, label: '19-question Finder Quiz - 3-stage scoring engine, weighted 35/40/25' },
+      { icon: Users, label: 'Community Voting - 1 vote/session, IP-stamped, shown on leaderboard' },
+      { icon: Terminal, label: 'Admin Dashboard - password-protected, trigger live DistroWatch scrape' },
+      { icon: GitBranch, label: 'Data Pipeline - manual seed + rule-based inference + LLM enrichment' },
     ],
     metrics: [
       { label: 'Distros', value: '492+' },
@@ -153,14 +153,14 @@ const projects: Project[] = [
     status: 'Live · Open Source',
     techStack: ['Python 3.10+', 'PySide6 (Qt 6)', 'Firebase Firestore', 'Firebase Auth', 'Cloud Functions', 'Node.js', 'QSS', 'REST API'],
     features: [
-      { icon: Users, label: 'Room-based collab — 6-char invite codes, real-time team sync' },
-      { icon: ListChecks, label: 'Full task pipeline — Proposed → Todo → Review → Done/Disputed' },
-      { icon: AlertTriangle, label: 'Smart escalation — H-2 / Late / Ghost (48h+) via Cloud Functions' },
-      { icon: HeartHandshake, label: 'Ghost Pool rescue — anyone can adopt abandoned tasks for +50% bonus' },
-      { icon: ShieldCheck, label: 'Peer review — random reviewer assigned, approve/reject with reason' },
-      { icon: Bell, label: 'Nudge system — 3/day cap, +2 pts to sender for accountability' },
-      { icon: Trophy, label: 'Accountability ledger — contribution %, leaderboard, Ghost Alert badges' },
-      { icon: Moon, label: 'Dark-first Qt UI — QSS, 4 tabs: Overview / Tasks / Ledger / Room Info' },
+      { icon: Users, label: 'Room-based collab - 6-char invite codes, real-time team sync' },
+      { icon: ListChecks, label: 'Full task pipeline - Proposed → Todo → Review → Done/Disputed' },
+      { icon: AlertTriangle, label: 'Smart escalation - H-2 / Late / Ghost (48h+) via Cloud Functions' },
+      { icon: HeartHandshake, label: 'Ghost Pool rescue - anyone can adopt abandoned tasks for +50% bonus' },
+      { icon: ShieldCheck, label: 'Peer review - random reviewer assigned, approve/reject with reason' },
+      { icon: Bell, label: 'Nudge system - 3/day cap, +2 pts to sender for accountability' },
+      { icon: Trophy, label: 'Accountability ledger - contribution %, leaderboard, Ghost Alert badges' },
+      { icon: Moon, label: 'Dark-first Qt UI - QSS, 4 tabs: Overview / Tasks / Ledger / Room Info' },
     ],
     metrics: [
       { label: 'License', value: 'MIT' },
@@ -191,7 +191,7 @@ function ProjectRow({ p, index, isOpen, onToggle }: { p: Project; index: number;
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className="relative"
     >
-      {/* The row — now a button for accessibility */}
+      {/* The row - now a button for accessibility */}
       <button
         ref={ref}
         onClick={onToggle}
@@ -243,7 +243,7 @@ function ProjectRow({ p, index, isOpen, onToggle }: { p: Project; index: number;
           )}
         </div>
 
-        {/* Floating image preview — only on hover, hidden when expanded */}
+        {/* Floating image preview - only on hover, hidden when expanded */}
         <motion.div
           className="pointer-events-none absolute z-[3] hidden md:block w-64 h-40 overflow-hidden rounded-md shadow-2xl"
           animate={{
@@ -328,7 +328,7 @@ function ProjectRow({ p, index, isOpen, onToggle }: { p: Project; index: number;
                 </ul>
               </div>
 
-              {/* Metrics — 3 col, more breathing room */}
+              {/* Metrics - 3 col, more breathing room */}
               <div className="md:col-span-3">
                 <div className="font-mono text-[10px] uppercase tracking-widest text-accent mb-4">
                   [Metrics]
@@ -383,7 +383,7 @@ export default function Projects() {
           transition={{ duration: 0.7 }}
           className="font-display font-medium text-[clamp(2rem,5vw,4.5rem)] leading-tight tracking-tight max-w-4xl mb-16 md:mb-24"
         >
-          Five builds — <span className="text-accent">one powers agentic AI memory</span>,
+          Five builds - <span className="text-accent">one powers agentic AI memory</span>,
           one ships on Linux desktops, one teaches coding, one compares 492+ distros, one orchestrates IT teams.
         </motion.h2>
 

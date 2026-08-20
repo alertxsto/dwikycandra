@@ -8,7 +8,6 @@ import Testimonials from '@/components/portfolio/testimonials'
 import Skills from '@/components/portfolio/skills'
 import Contact from '@/components/portfolio/contact'
 import Footer from '@/components/portfolio/footer'
-import ChatBot from '@/components/portfolio/chatbot'
 import { Toaster as SonnerToaster } from '@/components/ui/sonner'
 
 export default function Home() {
@@ -26,7 +25,6 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-      <ChatBot />
       <SonnerToaster
         position="bottom-right"
         toastOptions={{

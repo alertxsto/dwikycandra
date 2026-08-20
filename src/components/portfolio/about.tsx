@@ -61,7 +61,7 @@ export default function About() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="font-display font-medium tracking-[-0.03em] leading-[1.05] text-[clamp(2rem,6vw,5.5rem)] max-w-6xl"
         >
-          I build <span className="text-accent">agentic AI systems</span> that reason and ship —
+          I build <span className="text-accent">agentic AI systems</span> that reason and ship -
           and I do it from an <span className="text-outline">openSUSE Tumbleweed</span> terminal
           after years of distrohopping. Code that thinks, on a system that just works.
         </motion.h2>
@@ -100,14 +100,14 @@ export default function About() {
           </div>
           <div className="md:col-span-2 space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
             <p>
-              I&apos;m Dwiky — a full-stack developer who fell hard into agentic AI. I build agents
+              I&apos;m Dwiky - a full-stack developer who fell hard into agentic AI. I build agents
               that don&apos;t just answer questions but plan, use tools, and ship work end-to-end.
               Hermes-style orchestration, LangChain graphs, RAG pipelines over real
-              production data — the whole stack from prompt engineering to deployment.
+              production data - the whole stack from prompt engineering to deployment.
             </p>
             <p>
               On the OS side, I&apos;m a recovering distrohopper. I&apos;ve daily-driven Arch,
-              Fedora, NixOS, Debian, Pop!_OS, Endeavour, and a few I&apos;d rather forget — and I
+              Fedora, NixOS, Debian, Pop!_OS, Endeavour, and a few I&apos;d rather forget - and I
               finally landed on{' '}
               <span className="text-foreground font-medium">openSUSE Tumbleweed</span> for the
               rolling-release freshness with the stability of Zypper and Btrfs snapshots. When

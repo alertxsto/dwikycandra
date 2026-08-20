@@ -25,7 +25,7 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://dwikycandra.vercel.app"),
   title: {
-    default: "Dwiky Candra — Agentic AI Engineer & Linux Developer",
+    default: "Dwiky Candra - Agentic AI Engineer & Linux Developer",
     template: "%s | Dwiky Candra",
   },
   description:
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     canonical: "https://dwikycandra.vercel.app",
   },
   openGraph: {
-    title: "Dwiky Candra — Agentic AI Engineer & Linux Developer",
+    title: "Dwiky Candra - Agentic AI Engineer & Linux Developer",
     description:
       "Official portfolio of Dwiky Candra (@alertxsto). Building agentic AI systems, Linux tools, and autonomous agent memory.",
     url: "https://dwikycandra.vercel.app",
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dwiky Candra — Agentic AI Engineer & Linux Developer",
+    title: "Dwiky Candra - Agentic AI Engineer & Linux Developer",
     description:
       "Official portfolio of Dwiky Candra (@alertxsto). Building agentic AI systems, Linux tools, and autonomous agent memory.",
     creator: "@alertxsto",
@@ -123,7 +123,7 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": "https://dwikycandra.vercel.app/#website",
       "url": "https://dwikycandra.vercel.app",
-      "name": "Dwiky Candra — Portfolio",
+      "name": "Dwiky Candra - Portfolio",
       "publisher": {
         "@id": "https://dwikycandra.vercel.app/#person",
       },

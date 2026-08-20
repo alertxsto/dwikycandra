@@ -77,7 +77,7 @@ export default function Testimonials() {
               className="bg-background p-8 md:p-10 group hover:bg-accent hover:text-accent-foreground transition-colors duration-300 relative flex flex-col"
               data-cursor="hover"
             >
-              {/* Big metric — the visual hook */}
+              {/* Big metric - the visual hook */}
               <div className="flex items-baseline gap-3 mb-6">
                 <span className="font-display font-bold text-[clamp(3.5rem,8vw,6rem)] leading-none tracking-tighter text-accent group-hover:text-accent-foreground transition-colors">
                   {t.metric}
