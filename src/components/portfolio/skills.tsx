@@ -72,7 +72,7 @@ export default function Skills() {
             transition={{ duration: 0.7 }}
             className="font-display font-medium text-[clamp(2rem,5vw,4.5rem)] leading-tight tracking-tight max-w-4xl mb-16 md:mb-24"
           >
-            Tools I reach for <span className="text-accent">first</span> - from agent frameworks
+            Tools I reach for <span className="text-accent">first</span>: from agent frameworks
             to the terminal I live in.
           </motion.h2>
 

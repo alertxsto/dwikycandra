@@ -59,7 +59,7 @@ export default function Navbar() {
     hl.style.opacity = '1'
   }, [active])
 
-  // Hover pill follow (vanilla DOM mutation - no React re-render)
+  // Hover pill follow (vanilla DOM mutation; no React re-render)
   useEffect(() => {
     const nav = navRef.current
     const hoverHl = hoverHlRef.current
@@ -154,7 +154,7 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Live clock - hidden on small */}
+        {/* Live clock: hidden on small */}
         <div className="nav-clock" aria-hidden>
           <span className="nav-clock-dot" />
           {time}

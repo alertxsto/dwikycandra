@@ -46,7 +46,7 @@ export default function Hero() {
           transition={{ delay: 0.2 }}
           className="font-mono text-xs md:text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4 md:mb-6"
         >
-          - Agentic AI Engineer × Linux Engineer
+          Agentic AI Engineer × Linux Engineer
         </motion.div>
 
         <h1 className="font-display font-bold leading-[0.85] tracking-[-0.04em]">
@@ -83,7 +83,7 @@ export default function Hero() {
           className="mt-8 md:mt-12 max-w-2xl text-base md:text-xl text-muted-foreground leading-relaxed"
         >
           I build <span className="text-foreground font-medium">agentic AI systems</span> that
-          reason, plan, and ship - from Hermes-style agents to RAG pipelines. Daily-driving
+          reason, plan, and ship: from Hermes-style agents to RAG pipelines. Daily-driving
           <span className="text-foreground font-medium"> openSUSE Tumbleweed</span> after a long
           distrohopper journey. Coffee <span className="text-accent">→</span> code{' '}
           <span className="text-accent">→</span> autonomous agents.
@@ -108,7 +108,7 @@ export default function Hero() {
         </a>
         <div className="font-mono text-[10px] md:text-xs text-muted-foreground text-right">
           <div>(01 / 05)</div>
-          <div className="text-accent">- Index</div>
+          <div className="text-accent">Index</div>
         </div>
       </motion.div>
 

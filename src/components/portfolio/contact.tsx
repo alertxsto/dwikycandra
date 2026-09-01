@@ -9,7 +9,7 @@ const socials = [
   { label: 'Email', value: 'dwikycandra005@gmail.com', href: 'mailto:dwikycandra005@gmail.com' },
   { label: 'LinkedIn', value: '/in/dwiky-candra', href: 'https://linkedin.com/in/dwiky-candra' },
   { label: 'GitHub', value: '@alertxsto', href: 'https://github.com/alertxsto' },
-  { label: 'Portfolio', value: 'dwiky-candra.vercel.app', href: 'https://dwiky-candra.vercel.app' },
+  { label: 'Portfolio', value: 'dwikycandra.vercel.app', href: 'https://dwikycandra.vercel.app' },
   { label: 'Instagram', value: '@dky_cdr', href: 'https://instagram.com/dky_cdr' },
 ]
 
@@ -73,7 +73,7 @@ export default function Contact() {
           </button>
         </motion.div>
 
-        {/* Socials grid - 5 cards now, no Location card */}
+        {/* Socials grid: 5 cards now, no Location card */}
         <div className="mt-24 md:mt-32 grid grid-cols-2 md:grid-cols-3 gap-px bg-border border border-border">
           {socials.map((s, i) => (
             <motion.a
@@ -103,7 +103,7 @@ export default function Contact() {
             </motion.a>
           ))}
 
-          {/* Location card - non-link, distinct visual treatment */}
+          {/* Location card: non-link, distinct visual treatment */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
