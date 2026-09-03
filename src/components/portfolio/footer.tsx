@@ -1,16 +1,16 @@
-'use client'
+"use client";
 
-import { useLocalClock } from '@/hooks/use-local-clock'
+import { useLocalClock } from "@/hooks/use-local-clock";
 
 export default function Footer() {
-  const time = useLocalClock()
+  const time = useLocalClock();
 
   return (
     <footer className="relative mt-auto border-t border-border bg-background">
       {/* Quote */}
       <div className="px-6 md:px-10 pt-16 md:pt-24 max-w-5xl mx-auto text-center">
         <p className="font-display italic text-2xl md:text-4xl text-muted-foreground leading-tight">
-          &ldquo;Code that thinks, on a system that just rolls back when it doesn&apos;t.&rdquo;
+          &ldquo;Make the complex useful.&rdquo;
         </p>
       </div>
 
@@ -26,18 +26,22 @@ export default function Footer() {
         <div className="flex flex-wrap gap-6">
           <span>© 2026 Dwiky Candra</span>
           <span className="hidden md:inline">·</span>
-          <span>Built on openSUSE Tumbleweed</span>
+          <span>Built across systems and products</span>
         </div>
         <div className="flex flex-wrap gap-6">
           <span className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
             {time}
           </span>
-          <a href="#hero" className="hover:text-foreground transition-colors" data-cursor="hover">
+          <a
+            href="#hero"
+            className="hover:text-foreground transition-colors"
+            data-cursor="hover"
+          >
             Back to top ↑
           </a>
         </div>
       </div>
     </footer>
-  )
+  );
 }

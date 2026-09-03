@@ -1,14 +1,15 @@
-import Cursor from '@/components/portfolio/cursor'
-import Navbar from '@/components/portfolio/navbar'
-import SideRail from '@/components/portfolio/side-rail'
-import Hero from '@/components/portfolio/hero'
-import About from '@/components/portfolio/about'
-import Projects from '@/components/portfolio/projects'
-import Testimonials from '@/components/portfolio/testimonials'
-import Skills from '@/components/portfolio/skills'
-import Contact from '@/components/portfolio/contact'
-import Footer from '@/components/portfolio/footer'
-import { Toaster as SonnerToaster } from '@/components/ui/sonner'
+import Cursor from "@/components/portfolio/cursor";
+import Navbar from "@/components/portfolio/navbar";
+import SideRail from "@/components/portfolio/side-rail";
+import Hero from "@/components/portfolio/hero";
+import About from "@/components/portfolio/about";
+import Projects from "@/components/portfolio/projects";
+import Testimonials from "@/components/portfolio/testimonials";
+import Skills from "@/components/portfolio/skills";
+import GithubActivity from "@/components/portfolio/github-activity";
+import Contact from "@/components/portfolio/contact";
+import Footer from "@/components/portfolio/footer";
+import { Toaster as SonnerToaster } from "@/components/ui/sonner";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         <Projects />
         <Testimonials />
         <Skills />
+        <GithubActivity />
         <Contact />
       </main>
       <Footer />
@@ -29,13 +31,13 @@ export default function Home() {
         position="bottom-right"
         toastOptions={{
           style: {
-            background: 'var(--background)',
-            border: '1px solid var(--border)',
-            color: 'var(--foreground)',
-            fontFamily: 'var(--font-mono)',
+            background: "var(--background)",
+            border: "1px solid var(--border)",
+            color: "var(--foreground)",
+            fontFamily: "var(--font-mono)",
           },
         }}
       />
     </div>
-  )
+  );
 }

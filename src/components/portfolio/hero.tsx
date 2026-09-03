@@ -1,7 +1,8 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { ArrowDown, ArrowUpRight } from 'lucide-react'
+import { motion } from "framer-motion";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
+import CursorGrid from "./cursor-grid";
 
 export default function Hero() {
   return (
@@ -9,12 +10,23 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex flex-col justify-between pt-28 md:pt-32 pb-8 px-6 md:px-10 overflow-hidden bg-grid"
     >
+      <CursorGrid
+        className="inset-0"
+        cellSize={72}
+        color="#bef264"
+        radius={170}
+        holdTime={220}
+        fadeDuration={700}
+        maxOpacity={0.52}
+        lineWidth={1}
+      />
+
       {/* Top meta row */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 0.6 }}
-        className="grid grid-cols-2 md:grid-cols-4 gap-4 font-mono text-[10px] md:text-xs uppercase tracking-widest text-muted-foreground"
+        className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-4 font-mono text-[10px] md:text-xs uppercase tracking-widest text-muted-foreground"
       >
         <div>
           <span className="text-accent">[01]</span> Location
@@ -29,12 +41,12 @@ export default function Hero() {
         <div>
           <span className="text-accent">[03]</span> Role
           <br />
-          <span className="text-foreground">Agentic AI Eng</span>
+          <span className="text-foreground">Systems Builder</span>
         </div>
         <div>
-          <span className="text-accent">[04]</span> Daily Driver
+          <span className="text-accent">[04]</span> Focus
           <br />
-          <span className="text-foreground">Tumbleweed</span>
+          <span className="text-foreground">Systems + Products</span>
         </div>
       </motion.div>
 
@@ -46,7 +58,7 @@ export default function Hero() {
           transition={{ delay: 0.2 }}
           className="font-mono text-xs md:text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4 md:mb-6"
         >
-          Agentic AI Engineer × Linux Engineer
+          Systems Builder × Product Engineer
         </motion.div>
 
         <h1 className="font-display font-bold leading-[0.85] tracking-[-0.04em]">
@@ -68,10 +80,14 @@ export default function Hero() {
             <motion.span
               initial={{ scale: 0, rotate: -90 }}
               animate={{ scale: 1, rotate: 0 }}
-              transition={{ delay: 1.2, type: 'spring', stiffness: 200 }}
+              transition={{ delay: 1.2, type: "spring", stiffness: 200 }}
               className="inline-flex items-center justify-center w-16 h-16 md:w-28 md:h-28 rounded-full bg-accent text-accent-foreground shrink-0"
             >
-              <ArrowUpRight size={48} strokeWidth={2.5} className="md:w-12 md:h-12 w-8 h-8" />
+              <ArrowUpRight
+                size={48}
+                strokeWidth={2.5}
+                className="md:w-12 md:h-12 w-8 h-8"
+              />
             </motion.span>
           </motion.div>
         </h1>
@@ -82,11 +98,14 @@ export default function Hero() {
           transition={{ delay: 0.9, duration: 0.6 }}
           className="mt-8 md:mt-12 max-w-2xl text-base md:text-xl text-muted-foreground leading-relaxed"
         >
-          I build <span className="text-foreground font-medium">agentic AI systems</span> that
-          reason, plan, and ship: from Hermes-style agents to RAG pipelines. Daily-driving
-          <span className="text-foreground font-medium"> openSUSE Tumbleweed</span> after a long
-          distrohopper journey. Coffee <span className="text-accent">→</span> code{' '}
-          <span className="text-accent">→</span> autonomous agents.
+          I design and ship{" "}
+          <span className="text-foreground font-medium">
+            systems that make complex work clear
+          </span>
+          : from operational tools and data products to interfaces that help
+          people decide and move. Research{" "}
+          <span className="text-accent">→</span> build{" "}
+          <span className="text-accent">→</span> ship.
         </motion.p>
       </div>
 
@@ -95,7 +114,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4, duration: 0.6 }}
-        className="flex items-end justify-between mt-12"
+        className="relative z-10 flex items-end justify-between mt-12"
       >
         <a
           href="#work"
@@ -107,7 +126,7 @@ export default function Hero() {
           Scroll to explore
         </a>
         <div className="font-mono text-[10px] md:text-xs text-muted-foreground text-right">
-          <div>(01 / 05)</div>
+          <div>(01 / 06)</div>
           <div className="text-accent">Index</div>
         </div>
       </motion.div>
@@ -115,8 +134,10 @@ export default function Hero() {
       {/* Decorative blur orbs */}
       <div
         className="absolute -top-20 -right-20 w-96 h-96 rounded-full blur-3xl opacity-20 pointer-events-none"
-        style={{ background: 'radial-gradient(circle, var(--accent), transparent 70%)' }}
+        style={{
+          background: "radial-gradient(circle, var(--accent), transparent 70%)",
+        }}
       />
     </section>
-  )
+  );
 }

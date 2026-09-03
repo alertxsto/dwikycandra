@@ -1,45 +1,80 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { ArrowUpRight, Mail, MapPin } from 'lucide-react'
-import { useState } from 'react'
-import { toast } from 'sonner'
+import { motion } from "framer-motion";
+import { ArrowUpRight, Mail, MapPin } from "lucide-react";
+import { useState } from "react";
+import { toast } from "sonner";
+import CursorGrid from "./cursor-grid";
 
 const socials = [
-  { label: 'Email', value: 'dwikycandra005@gmail.com', href: 'mailto:dwikycandra005@gmail.com' },
-  { label: 'LinkedIn', value: '/in/dwiky-candra', href: 'https://linkedin.com/in/dwiky-candra' },
-  { label: 'GitHub', value: '@alertxsto', href: 'https://github.com/alertxsto' },
-  { label: 'Portfolio', value: 'dwikycandra.vercel.app', href: 'https://dwikycandra.vercel.app' },
-  { label: 'Instagram', value: '@dky_cdr', href: 'https://instagram.com/dky_cdr' },
-]
+  {
+    label: "Email",
+    value: "dwikycandra@proton.me",
+    href: "mailto:dwikycandra@proton.me",
+  },
+  {
+    label: "LinkedIn",
+    value: "/in/dwiky-candra",
+    href: "https://linkedin.com/in/dwiky-candra",
+  },
+  {
+    label: "GitHub",
+    value: "@alertxsto",
+    href: "https://github.com/alertxsto",
+  },
+  {
+    label: "Portfolio",
+    value: "dwikycandra.vercel.app",
+    href: "https://dwikycandra.vercel.app",
+  },
+  {
+    label: "Instagram",
+    value: "@dky_cdr",
+    href: "https://instagram.com/dky_cdr",
+  },
+];
 
 export default function Contact() {
-  const [copied, setCopied] = useState(false)
+  const [copied, setCopied] = useState(false);
 
   const copyEmail = async () => {
     try {
-      await navigator.clipboard.writeText('dwikycandra005@gmail.com')
-      setCopied(true)
-      toast.success('Email copied to clipboard')
-      setTimeout(() => setCopied(false), 1800)
+      await navigator.clipboard.writeText("dwikycandra@proton.me");
+      setCopied(true);
+      toast.success("Email copied to clipboard");
+      setTimeout(() => setCopied(false), 1800);
     } catch {
-      toast.error('Could not copy')
+      toast.error("Could not copy");
     }
-  }
+  };
 
   return (
     <section
       id="contact"
       className="relative py-24 md:py-40 px-6 md:px-10 border-t border-border overflow-hidden"
     >
+      <CursorGrid
+        className="inset-0"
+        cellSize={72}
+        color="#bef264"
+        radius={170}
+        holdTime={260}
+        fadeDuration={760}
+        maxOpacity={0.58}
+        lineWidth={1}
+      />
       <div
         className="absolute -bottom-40 -left-20 w-[600px] h-[600px] rounded-full blur-3xl opacity-25 pointer-events-none"
-        style={{ background: 'radial-gradient(circle, var(--accent), transparent 70%)' }}
+        style={{
+          background: "radial-gradient(circle, var(--accent), transparent 70%)",
+        }}
       />
 
-      <div className="max-w-7xl mx-auto relative">
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex items-center gap-4 mb-12 md:mb-20">
-          <span className="font-mono text-xs uppercase tracking-widest text-accent">[05]</span>
+          <span className="font-mono text-xs uppercase tracking-widest text-accent">
+            [06]
+          </span>
           <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
             Contact
           </span>
@@ -54,7 +89,7 @@ export default function Contact() {
           className="text-center"
         >
           <div className="font-mono text-xs md:text-sm uppercase tracking-[0.3em] text-muted-foreground mb-8">
-            Got a project? Let&apos;s talk.
+            Need a system to make the hard part clearer?
           </div>
 
           <h2 className="font-display font-bold leading-[0.85] tracking-[-0.04em] text-[clamp(3rem,12vw,12rem)]">
@@ -67,9 +102,15 @@ export default function Contact() {
             data-cursor="hover"
             className="group mt-12 inline-flex items-center gap-4 font-display font-semibold text-xl md:text-3xl border-b-2 border-foreground pb-2 hover:text-accent hover:border-accent transition-colors max-w-full break-all"
           >
-            <Mail size={28} className="group-hover:rotate-12 transition-transform shrink-0" />
-            {copied ? 'Copied!' : 'dwikycandra005@gmail.com'}
-            <ArrowUpRight size={28} className="group-hover:rotate-45 transition-transform shrink-0" />
+            <Mail
+              size={28}
+              className="group-hover:rotate-12 transition-transform shrink-0"
+            />
+            {copied ? "Copied!" : "dwikycandra@proton.me"}
+            <ArrowUpRight
+              size={28}
+              className="group-hover:rotate-45 transition-transform shrink-0"
+            />
           </button>
         </motion.div>
 
@@ -79,8 +120,10 @@ export default function Contact() {
             <motion.a
               key={s.label}
               href={s.href}
-              target={s.href.startsWith('http') ? '_blank' : undefined}
-              rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              target={s.href.startsWith("http") ? "_blank" : undefined}
+              rel={
+                s.href.startsWith("http") ? "noopener noreferrer" : undefined
+              }
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -127,5 +170,5 @@ export default function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }

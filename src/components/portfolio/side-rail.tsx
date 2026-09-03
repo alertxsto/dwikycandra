@@ -1,32 +1,35 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const sections = [
-  { id: 'hero', num: '01', label: 'Index' },
-  { id: 'about', num: '02', label: 'About' },
-  { id: 'work', num: '03', label: 'Work' },
-  { id: 'skills', num: '04', label: 'Skills' },
-  { id: 'contact', num: '05', label: 'Contact' },
-]
+  { id: "hero", num: "01", label: "Index" },
+  { id: "about", num: "02", label: "About" },
+  { id: "work", num: "03", label: "Work" },
+  { id: "skills", num: "04", label: "Skills" },
+  { id: "activity", num: "05", label: "Activity" },
+  { id: "contact", num: "06", label: "Contact" },
+];
 
 export default function SideRail() {
-  const [active, setActive] = useState('hero')
+  const [active, setActive] = useState("hero");
 
   useEffect(() => {
-    const els = sections.map((s) => document.getElementById(s.id)).filter(Boolean) as HTMLElement[]
+    const els = sections
+      .map((s) => document.getElementById(s.id))
+      .filter(Boolean) as HTMLElement[];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(entry.target.id)
-        })
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
       },
-      { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
-    )
-    els.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
+      { rootMargin: "-40% 0px -55% 0px", threshold: 0 },
+    );
+    els.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <motion.aside
@@ -40,7 +43,7 @@ export default function SideRail() {
       <div className="w-px h-8 bg-border" />
 
       {sections.map((s) => {
-        const isActive = active === s.id
+        const isActive = active === s.id;
         return (
           <a
             key={s.id}
@@ -53,8 +56,8 @@ export default function SideRail() {
             <span
               className={`font-mono text-[10px] uppercase tracking-widest transition-all duration-300 ${
                 isActive
-                  ? 'text-accent opacity-100 translate-x-0'
-                  : 'text-muted-foreground opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0'
+                  ? "text-accent opacity-100 translate-x-0"
+                  : "text-muted-foreground opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0"
               }`}
             >
               {s.label}
@@ -64,7 +67,9 @@ export default function SideRail() {
             <span className="relative flex items-center justify-end w-8">
               <span
                 className={`font-mono text-[10px] tabular-nums transition-colors ${
-                  isActive ? 'text-accent' : 'text-muted-foreground group-hover:text-foreground'
+                  isActive
+                    ? "text-accent"
+                    : "text-muted-foreground group-hover:text-foreground"
                 }`}
               >
                 {s.num}
@@ -75,11 +80,11 @@ export default function SideRail() {
                   scale: isActive ? 1 : 0,
                   opacity: isActive ? 1 : 0,
                 }}
-                transition={{ type: 'spring', stiffness: 380, damping: 25 }}
+                transition={{ type: "spring", stiffness: 380, damping: 25 }}
               />
             </span>
           </a>
-        )
+        );
       })}
 
       {/* Bottom tick */}
@@ -90,5 +95,5 @@ export default function SideRail() {
         DWIKY.DEV / 2026
       </div>
     </motion.aside>
-  )
+  );
 }

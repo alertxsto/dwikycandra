@@ -1,52 +1,77 @@
-'use client'
+"use client";
 
-import { motion, useInView } from 'framer-motion'
-import { useEffect, useRef, useState } from 'react'
-import Certifications from './certifications'
+import { motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import Certifications from "./certifications";
 
-function Counter({ to, suffix = '' }: { to: number; suffix?: string }) {
-  const ref = useRef<HTMLSpanElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-50px' })
-  const [n, setN] = useState(0)
+function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-50px" });
+  const [n, setN] = useState(0);
 
   useEffect(() => {
-    if (!inView) return
-    let raf = 0
-    const duration = 1600
-    const start = performance.now()
+    if (!inView) return;
+    let raf = 0;
+    const duration = 1600;
+    const start = performance.now();
     const tick = (t: number) => {
-      const p = Math.min((t - start) / duration, 1)
-      const eased = 1 - Math.pow(1 - p, 3)
-      setN(Math.floor(eased * to))
-      if (p < 1) raf = requestAnimationFrame(tick)
-      else setN(to)
-    }
-    raf = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf)
-  }, [inView, to])
+      const p = Math.min((t - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setN(Math.floor(eased * to));
+      if (p < 1) raf = requestAnimationFrame(tick);
+      else setN(to);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [inView, to]);
 
   return (
     <span ref={ref}>
-      {n.toLocaleString('en-US')}
+      {n.toLocaleString("en-US")}
       {suffix}
     </span>
-  )
+  );
 }
 
 const stats = [
-  { value: 1247, suffix: '+', label: 'Active learners', note: 'ZeroCode platform' },
-  { value: 16, suffix: '+', label: 'Projects shipped', note: 'production · real users' },
-  { value: 370, suffix: '+', label: 'Automated tests', note: '93% coverage · PyPI library' },
-  { value: 4, suffix: '', label: 'Pro certifications', note: 'IBM × IDCamp × DBS × AWS' },
-]
+  {
+    value: 1247,
+    suffix: "+",
+    label: "Active learners",
+    note: "ZeroCode platform",
+  },
+  {
+    value: 16,
+    suffix: "+",
+    label: "Projects shipped",
+    note: "production · real users",
+  },
+  {
+    value: 370,
+    suffix: "+",
+    label: "Automated tests",
+    note: "93% coverage · PyPI library",
+  },
+  {
+    value: 4,
+    suffix: "",
+    label: "Pro certifications",
+    note: "IBM × IDCamp × DBS × AWS",
+  },
+];
 
 export default function About() {
   return (
-    <section id="about" className="relative py-24 md:py-40 px-6 md:px-10 border-t border-border">
+    <section
+      id="about"
+      className="relative py-24 md:py-40 px-6 md:px-10 border-t border-border"
+    >
       <div className="max-w-7xl mx-auto">
         {/* Section label */}
         <div className="flex items-center gap-4 mb-16 md:mb-24">
-          <span className="font-mono text-xs uppercase tracking-widest text-accent">[02]</span>
+          <span className="font-mono text-xs uppercase tracking-widest text-accent">
+            [02]
+          </span>
           <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
             About
           </span>
@@ -57,13 +82,16 @@ export default function About() {
         <motion.h2
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="font-display font-medium tracking-[-0.03em] leading-[1.05] text-[clamp(2rem,6vw,5.5rem)] max-w-6xl"
         >
-          I build <span className="text-accent">agentic AI systems</span> that reason and ship. I do
-          it from an <span className="text-outline">openSUSE Tumbleweed</span> terminal
-          after years of distrohopping. Code that thinks, on a system that just works.
+          I build{" "}
+          <span className="text-accent">
+            systems that make complex work clearer
+          </span>
+          : products, interfaces, and infrastructure that help people
+          understand, decide, and ship.
         </motion.h2>
 
         {/* Stats grid */}
@@ -80,7 +108,9 @@ export default function About() {
               <div className="font-display font-bold text-[clamp(2.5rem,7vw,5rem)] leading-none tracking-tight">
                 <Counter to={s.value} suffix={s.suffix} />
               </div>
-              <div className="mt-4 font-display font-semibold text-base md:text-xl">{s.label}</div>
+              <div className="mt-4 font-display font-semibold text-base md:text-xl">
+                {s.label}
+              </div>
               <div className="mt-1 font-mono text-[10px] md:text-xs uppercase tracking-wider text-muted-foreground group-hover:text-accent-foreground/70">
                 {s.note}
               </div>
@@ -95,32 +125,35 @@ export default function About() {
               [Bio]
             </div>
             <div className="font-display text-2xl md:text-3xl font-medium leading-tight">
-              Coffee → code → autonomous agents.
+              Systems → products → useful work.
             </div>
           </div>
           <div className="md:col-span-2 space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
             <p>
-              I&apos;m Dwiky, a full-stack developer who fell hard into agentic AI. I build agents
-              that don&apos;t just answer questions but plan, use tools, and ship work end-to-end.
-              Hermes-style orchestration, LangChain graphs, RAG pipelines over real
-              production data, covering the whole stack from prompt engineering to deployment.
+              I&apos;m Dwiky, a systems-minded builder working across product
+              interfaces, data, automation, and infrastructure. I care about the
+              seams: how a model becomes a workflow, how a dataset becomes a
+              decision, and how a tool behaves when the conditions are not
+              ideal.
             </p>
             <p>
-              On the OS side, I&apos;m a recovering distrohopper. I&apos;ve daily-driven Arch,
-              Fedora, NixOS, Debian, Pop!_OS, Endeavour, and a few I&apos;d rather forget, and I
-              finally landed on{' '}
-              <span className="text-foreground font-medium">openSUSE Tumbleweed</span> for the
-              rolling-release freshness with the stability of Zypper and Btrfs snapshots. When
-              something breaks, I roll back. When it doesn&apos;t, I ship.
+              My work moves between operational tools, knowledge systems, and
+              interfaces for real people. I like software that stays legible
+              under pressure: clear states, honest data, useful defaults, and an
+              escape hatch when the happy path breaks.
             </p>
             <p>
-              I build and maintain{' '}
-              <span className="text-foreground font-medium">Luminary Memory</span>, an open-source
-              self-hosted memory layer on PyPI for autonomous AI agents. Alongside{' '}
-              <span className="text-foreground font-medium">ZeroCode</span> (coding academy with a browser
-              Monaco IDE) and <span className="text-foreground font-medium">kydev</span> (native Linux
-              dashboard), I focus on local ONNX inference, Hermes agent orchestration, and bulletproof
-              systems programming on Linux.
+              I build and maintain products such as{" "}
+              <span className="text-foreground font-medium">
+                Luminary Memory
+              </span>
+              , <span className="text-foreground font-medium">ZeroCode</span>,{" "}
+              <span className="text-foreground font-medium">KyDev</span>, and{" "}
+              <span className="text-foreground font-medium">Kasir Pintar</span>.
+              I also lead{" "}
+              <span className="text-foreground font-medium">JWIS</span>, a civic
+              operations system that turns fleet, forecast, and field signals
+              into a clearer decision loop.
             </p>
           </div>
         </div>
@@ -129,5 +162,5 @@ export default function About() {
         <Certifications />
       </div>
     </section>
-  )
+  );
 }
