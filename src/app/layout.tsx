@@ -120,7 +120,7 @@ const projectStructuredData = [
     name: "Luminary Memory",
     url: "https://github.com/alertxsto/luminary-memory",
     description:
-      "Self-hosted memory and retrieval infrastructure for software agents.",
+      "Scope-aware, evidence-backed self-hosted memory and retrieval infrastructure for AI agents with a first-class Hermes Agent provider.",
   },
   {
     name: "ZeroCode",

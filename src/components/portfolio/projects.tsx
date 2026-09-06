@@ -216,13 +216,17 @@ const projects: Project[] = [
     role: "Creator · Lead Architect",
     hue: "from-indigo-400 to-purple-600",
     featured: true,
-    status: "Open source · v0.2.16",
+    status: "Open source · v0.3.0",
     tagline:
-      "A lightweight, self-hosted memory layer for AI agents. 4-strategy parallel fusion (ONNX, SQLite FTS5, temporal, graph), DB-backed core memory, and first-class Hermes Agent provider.",
-    tags: ["Python", "ONNX", "SQLite", "Retrieval"],
+      "A lightweight, self-hosted memory layer for AI agents. Four retrieval strategies fuse scoped, evidence-backed context with DB-backed core memory and a first-class Hermes Agent provider; an OpenCode adapter is in development.",
+    tags: ["Python", "ONNX", "Evidence", "Hermes Agent"],
     links: [
       { label: "Live", href: "https://alertxsto.github.io/luminary-memory/" },
       { label: "Source", href: "https://github.com/alertxsto/luminary-memory" },
+      {
+        label: "OpenCode (dev)",
+        href: "https://github.com/alertxsto/luminary-memory/tree/feature/opencode-integration",
+      },
     ],
     techStack: [
       "Python 3.11+",
@@ -231,18 +235,18 @@ const projects: Project[] = [
       "pgvector",
       "Hermes Agent",
       "Pytest",
-      "RRF",
+      "Weighted RRF",
     ],
     features: [
       {
         icon: Brain,
         label:
-          "Four-way parallel fusion combines ONNX vector search, FTS5 BM25, temporal decay, and entity graph signals",
+          "Up to four retrieval strategies combine ONNX vector search, FTS5 BM25, temporal decay, and entity-graph signals through weighted RRF",
       },
       {
         icon: Database,
         label:
-          "DB-backed core memory, persistent memory, and recall storage stay local and deduplicated",
+          "Scope-aware core memory and local recall storage stay deduplicated across user, workspace, agent, and session boundaries",
       },
       {
         icon: Network,
@@ -252,34 +256,34 @@ const projects: Project[] = [
       {
         icon: ShieldCheck,
         label:
-          "Rule pinning, contradiction-aware replacement, and content-level anti-duplication protect durable context",
+          "Evidence-backed claims retain grounded quotes, canonical keys, validity, and lifecycle state for auditable recall",
       },
       {
         icon: Layers,
         label:
-          "Adaptive importance lets useful recalled memories graduate into persistent context",
+          "Conflicting claims stay preserved until explicit evidence-grounded supersession or retraction",
       },
       {
         icon: Sparkles,
         label:
-          "Temporal signals and health scoring make memory freshness and relevance inspectable",
+          "Adaptive importance tunes recall ranking and pruning rather than pinning recalled context into the prompt",
       },
       {
         icon: Cpu,
         label:
-          "TTL cleanup and semantic consolidation keep the store healthy as it grows",
+          "Temporal signals, health scoring, TTL cleanup, and semantic consolidation keep the store inspectable and healthy",
       },
       {
         icon: Bot,
         label:
-          "Hermes Agent provider integration supports per-turn context prefetch",
+          "Hermes Agent provider supports per-turn auto-recall and bounded exact-session continuity; Pi support is not shipped",
       },
     ],
     metrics: [
-      { label: "Version", value: "0.2.16" },
-      { label: "Coverage", value: "93%" },
-      { label: "Tests", value: "370+" },
-      { label: "Cloud tokens", value: "0" },
+      { label: "Version", value: "0.3.0" },
+      { label: "Coverage", value: "83%" },
+      { label: "Tests", value: "505+" },
+      { label: "License", value: "Apache-2.0" },
     ],
   },
   {

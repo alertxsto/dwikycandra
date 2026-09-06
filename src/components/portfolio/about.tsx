@@ -47,10 +47,10 @@ const stats = [
     note: "production · real users",
   },
   {
-    value: 370,
+    value: 505,
     suffix: "+",
     label: "Automated tests",
-    note: "93% coverage · PyPI library",
+    note: "83% coverage · Luminary Memory",
   },
   {
     value: 4,
