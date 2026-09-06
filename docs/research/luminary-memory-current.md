@@ -14,7 +14,7 @@
 ## Release and package evidence
 
 | Finding | First-party evidence |
-|---|---|
+| --- | --- |
 | Latest released version is `v0.3.0` | [GitHub Releases API `/releases/latest`](https://api.github.com/repos/alertxsto/luminary-memory/releases/latest): `"tag_name":"v0.3.0"`, `"published_at":"2026-08-23T22:19:57Z"`, and `"html_url":"https://github.com/alertxsto/luminary-memory/releases/tag/v0.3.0"`. The [tags API](https://api.github.com/repos/alertxsto/luminary-memory/tags) lists `v0.3.0` first. |
 | Tag/commit date | [Tag target commit API](https://api.github.com/repos/alertxsto/luminary-memory/commits/a54ee4744c67149cd8628b2200d6907f1d169394): commit `a54ee...`, author and committer date `2026-08-23T22:18:40Z`. |
 | Changelog date and release contents | [`CHANGELOG.md`, `## [0.3.0] - 2026-08-24`](https://github.com/alertxsto/luminary-memory/blob/main/CHANGELOG.md#030---2026-08-24): “Major release. Memory is now scoped, evidenced, and auditable end to end” and current verification `505 passed, 3 skipped`, `83%` full-source coverage. |
@@ -28,7 +28,7 @@ The claims below are the LUMINARY MEMORY entry at [`src/components/portfolio/pro
 ### Identity, tagline, and stack
 
 | Portfolio claim | Assessment | Located first-party evidence |
-|---|---|---|
+| --- | --- | --- |
 | `Open source · v0.2.16` | **Partly stale.** Open-source status is supported, but the version is stale; current release/package version is `v0.3.0`. | [`pyproject.toml`, `[project]`](https://github.com/alertxsto/luminary-memory/blob/main/pyproject.toml) declares Apache-2.0 and `0.3.0`; [latest release](https://github.com/alertxsto/luminary-memory/releases/tag/v0.3.0) is `v0.3.0`. |
 | “A lightweight, self-hosted memory layer for AI agents.” | **Accurate.** | [`README.md`, opening description](https://github.com/alertxsto/luminary-memory/blob/main/README.md): “**A lightweight, self-hosted memory layer for AI agents.**” |
 | “4-strategy parallel fusion (ONNX, SQLite FTS5, temporal, graph)” | **Mostly accurate, but qualify `parallel`.** The four strategies and weighted fusion are current; the planner may skip a low-value strategy. | [`README.md`, “Four retrieval strategies. One fused result. Local by default.”](https://github.com/alertxsto/luminary-memory/blob/main/README.md): “**Four retrieval strategies. One fused result. Local by default.**” [`docs/recall.md`, “Four strategies”](https://github.com/alertxsto/luminary-memory/blob/main/docs/recall.md#four-strategies): “`recall(query)` evaluates up to four complementary strategies and fuses them”; it also says the query planner “may skip a low-value strategy.” |
@@ -45,7 +45,7 @@ The claims below are the LUMINARY MEMORY entry at [`src/components/portfolio/pro
 ### Feature cards
 
 | Portfolio claim | Assessment | Located first-party evidence |
-|---|---|---|
+| --- | --- | --- |
 | “Four-way parallel fusion combines ONNX vector search, FTS5 BM25, temporal decay, and entity graph signals” | **Accurate after qualifying `parallel` as above.** | [`docs/recall.md`, “Four strategies”](https://github.com/alertxsto/luminary-memory/blob/main/docs/recall.md#four-strategies) defines semantic, keyword/FTS5, temporal, and graph retrieval; “Fusion” defines RRF. |
 | “DB-backed core memory, persistent memory, and recall storage stay local and deduplicated” | **Mostly accurate.** Core memory is DB-backed/local and core/query injection deduplicates by IDs and content hashes. Avoid wording that implies the removed importance-based “persistent context” surface. | [`docs/recall.md`, “Core memory”](https://github.com/alertxsto/luminary-memory/blob/main/docs/recall.md#core-memory-db-backed-auto-loaded): “Anti-duplication: memory ids and content hashes ... are tracked per turn”; [`docs/hermes-integration.md`, “Store layout”](https://github.com/alertxsto/luminary-memory/blob/main/docs/hermes-integration.md#store-layout) places the store at the local `$HERMES_HOME/luminary/memory.db`. |
 | “Rule-aware query expansion preserves useful context when an entity graph has no direct match” | **Accurate.** | [`README.md`, “Accuracy safeguards”](https://github.com/alertxsto/luminary-memory/blob/main/README.md#architecture): “When the graph is empty, content tokens from a topically related important memory may be appended.” [`docs/recall.md`, “Query expansion”](https://github.com/alertxsto/luminary-memory/blob/main/docs/recall.md#query-expansion) documents the v0.2.15 content-aware fallback. |
@@ -58,7 +58,7 @@ The claims below are the LUMINARY MEMORY entry at [`src/components/portfolio/pro
 ### Metrics
 
 | Portfolio metric | Assessment | Current evidence |
-|---|---|---|
+| --- | --- | --- |
 | `Version: 0.2.16` | **Stale.** Update to `0.3.0`. | [`pyproject.toml`](https://github.com/alertxsto/luminary-memory/blob/main/pyproject.toml): `version = "0.3.0"`; [release `v0.3.0`](https://github.com/alertxsto/luminary-memory/releases/tag/v0.3.0). |
 | `Coverage: 93%` | **Stale.** Current release evidence reports **83% full-source coverage**. | [`CHANGELOG.md`, v0.3.0 tests](https://github.com/alertxsto/luminary-memory/blob/main/CHANGELOG.md#030---2026-08-24): “`83%` full-source coverage (`4,866` statements, `837` missed).” The [README badge](https://github.com/alertxsto/luminary-memory/blob/main/README.md) also says `coverage-83%`. |
 | `Tests: 370+` | **Stale.** Current release evidence reports **505 passed, 3 skipped**; README advertises `505+ passing`. | [`CHANGELOG.md`, v0.3.0 tests](https://github.com/alertxsto/luminary-memory/blob/main/CHANGELOG.md#030---2026-08-24); [`README.md` test badge](https://github.com/alertxsto/luminary-memory/blob/main/README.md). |

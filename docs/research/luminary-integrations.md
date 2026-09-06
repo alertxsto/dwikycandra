@@ -12,7 +12,7 @@ The package metadata on current `main` still declares `version = "0.3.0"` ([`pyp
 ## Executive conclusion
 
 | Host | Explicit first-class support in `v0.3.0` / current `main`? | Portfolio wording |
-|---|---:|---|
+| --- | ---: | --- |
 | Hermes Agent | **Yes** | Truthfully say Luminary Memory supports/integrates with Hermes Agent as a first-class memory provider. |
 | Pi coding agent | **No** | Do not say the repository supports Pi. At most, say the generic Python API/CLI could be manually used by an agent, if that configuration is separately built and tested. |
 | OpenCode | **No in `v0.3.0` or current `main`** | Do not claim released/current-main OpenCode support. A separate branch named `feature/opencode-integration` contains an explicit OpenCode adapter, but that branch is not the inspected release or `main`. |
